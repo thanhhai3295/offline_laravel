@@ -178,3 +178,53 @@ ul.main_nav_list li.active a{
 {
     color: #61e49b;
 }
+nav.main_nav ul.main_nav_list > li{
+    position: relative;
+    padding: 5px 10px;
+    margin-right:0;
+    min-width: 150px;
+    text-align: center;
+    
+}
+nav.main_nav ul.main_nav_list li:hover{
+    background: indigo;
+    transition: all 300ms;
+}
+nav.main_nav ul.main_nav_list li:hover > a {
+    color: #fff;
+    transition: all 300ms;
+}
+nav.main_nav ul.main_nav_list li > ul {
+    background: indigo;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    display: none;
+    text-align: center;
+    transform: translateX(-25%);
+    animation: blink 1s;
+}
+nav.main_nav ul.main_nav_list li > ul li {
+    padding: 5px 10px;
+    margin-right:0;
+    min-width: 300px;
+}
+nav.main_nav ul.main_nav_list li > ul li a {
+    color: #fff;
+}
+nav.main_nav ul.main_nav_list li > ul li:hover {
+   background: #000;
+   transition:all 300ms;
+}
+nav.main_nav ul.main_nav_list > li:hover ul {
+    display: block;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

@@ -34,6 +34,10 @@
         'feature'    => ['name' =>'Feature'],
         'normal'    => ['name' =>'Normal']
       ],
+      'menu_type' => [
+        'direct' => ['name' => 'Direct'],
+        'category' => ['name' => 'Category'],
+      ],
       'search' => [
         'all'         => ['name' =>'Search By All'],
         'id'          => ['name' =>'Search By ID'],
@@ -63,14 +67,16 @@
         'slider'  => ['all','id','name','description','link'],
         'category'  => ['all','id','name'],
         'article'  => ['all','name','content'],
-        'user'  => ['all','username','email']
+        'user'  => ['all','username','email'],
+        'menu'  => ['all','name','link']
       ],
       'button' => [
         'default' => ['edit','delete'],
         'slider'  => ['edit','delete',],
         'category'  => ['edit','delete',],
         'article'  => ['edit','delete',],
-        'user'  => ['edit']
+        'user'  => ['edit'],
+        'menu'  => ['edit','delete',]
       ]
     ]
   ];

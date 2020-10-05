@@ -1,27 +1,38 @@
 @php
     use App\Models\CategoryModel as CategoryModel;
+    use App\Models\MenuModel as MenuModel;
     use App\Helpers\URL;
     $categoryModel = new CategoryModel();
     $itemsCategory = $categoryModel->listItems(null,['task' => 'menu-list-items']);
+
+    $MenuModel = new MenuModel();
+    $itemsMenu = $MenuModel->listItems(null,['task' => 'menu-list-items']);
+
     $xhtmlMenu = '';
     $xhtmlMenuMobile = '';
-    if(count($itemsCategory) > 0) {
+    if(count($itemsMenu) > 0) {
         $xhtmlMenu = '<nav class="main_nav">
                         <ul class="main_nav_list d-flex flex-row align-items-center justify-content-start">';
-        $xhtmlMenuMobile = '<nav class="menu_nav"><ul class="menu_mm">';
-        $categoryID = request()->category_id;
-        foreach ($itemsCategory as $key => $value) {
-            $link = URL::linkCategory($value['name'],$value['id']);
-            
-            $classActive = ($value['id'] == $categoryID) ? 'class="active"' : '';
-            $xhtmlMenu .= '<li '.$classActive.'><a href="'.$link.'">'.$value['name'].'</a></li>';
-            $xhtmlMenuMobile .= '<li class="menu_mm"><a href="#">'.$value['name'].'</a></li>';
+        //$xhtmlMenuMobile = '<nav class="menu_nav"><ul class="menu_mm">';
+        foreach ($itemsMenu as $key => $value) {
+            $classActive = '';
+            $xhtmlMenu .= '<li '.$classActive.'><a href="'.$value['link'].'">'.$value['name'].'</a>';
+            if($value['type'] == 'category') {
+                $xhtmlMenu .= '<ul>';
+                    foreach ($itemsCategory as $key02 => $value02) {
+                        $link = URL::linkCategory($value02['name'],$value02['id']);   
+                        $xhtmlMenu .= '<li><a href="'.$link.'">'.$value02['name'].'</a></li>';
+                        //$xhtmlMenuMobile .= '<li class="menu_mm"><a href="#">'.$value02['name'].'</a></li>';
+                    }
+                $xhtmlMenu .= '</ul>';
+            }
+            $xhtmlMenu .= '</li>';
         }
         $xhtmlLogin = '<li><a href="'.route('auth/login').'">Đăng Nhập</a></li>';
         $xhtmlLogout = '<li><a href="'.route('auth/logout').'">Đăng Xuất</a></li>';
         $xhtmlAuth = session('userInfo') ? $xhtmlLogout :  $xhtmlLogin;
         $xhtmlMenu .= $xhtmlAuth.'</ul></nav>';
-        $xhtmlMenuMobile .= '</ul></nav>';
+        //$xhtmlMenuMobile .= '</ul></nav>';
     }
 @endphp
 <!-- Header -->
