@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $id = $this->id;
-        $task   = $this->task;
+        $task = $this->task;
         $condAvatar   = '';
         $condUserName = '';
         $condEmail    = '';
@@ -33,7 +33,9 @@ class UserRequest extends FormRequest
         $condLevel    = '';
         $condStatus   = '';
         $condFullname = '';
-
+        if(isset($this->change_level)) $task = 'change-level';
+        if(isset($this->edit_info)) $task = 'edit-info';
+        if(isset($this->change_password)) $task = 'change-password';
         switch ($task) {
             case 'add':
                 $condUserName   = "bail|required|between:5,100|unique:$this->table,username";

@@ -2,7 +2,7 @@
   use App\Helpers\Template as Template; 
   use App\Helpers\Form as FormTemplate; 
   $inputHiddenID = Form::hidden('id', $item['id']);
-  $inputHiddenTask = Form::hidden('task', 'change-password');
+  $inputHiddenTask = Form::hidden('change_password','change-password');
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
   $elements = [

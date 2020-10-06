@@ -4,7 +4,7 @@
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
   $inputHiddenID = Form::hidden('id', $item['id']);
-  $inputHiddenTask = Form::hidden('task', 'edit-info');
+  $inputHiddenTask = Form::hidden('edit_info','edit-info');
   $inputHiddenAvatar = Form::hidden('avatar_current', $item['avatar']);
   $statusValue = [
     'default'  => config('zvn.template.status.default.name'),

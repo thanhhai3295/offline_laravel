@@ -2,7 +2,7 @@
   use App\Helpers\Template as Template; 
   use App\Helpers\Form as FormTemplate; 
   $inputHiddenID = Form::hidden('id', $item['id']);
-  $inputHiddenTask = Form::hidden('task', 'change-level');
+  $inputHiddenTask = Form::hidden('change_level','change-level');
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
   $levelValue = [
