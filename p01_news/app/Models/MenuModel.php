@@ -34,6 +34,7 @@ class MenuModel extends AdminModel
                 }
             }
             $result = $query->orderBy('id','desc')->paginate($params['pagination']['totalItemsPerPage']);  
+            return $result;
         }
         if($options['task'] == 'menu-list-items'){
             $result = $this->select('id','name','link','type')->where('status','active')->orderBy('ordering','asc')->get()->toArray();
@@ -65,6 +66,9 @@ class MenuModel extends AdminModel
         if($options['task'] == 'change-status'){
             $status = ($params['status'] == 'active') ? 'inactive' : 'active';
             $this->where('id',$params['id'])->update(['status' => $status]);
+        }
+        if($options['task'] == 'change-ordering'){
+            $this->where('id',$params['id'])->update(['ordering' => $params['ordering']]);
         }
         if($options['task'] == 'change-type'){
             $this->where('id',$params['id'])->update(['type' => $params['type']]);

@@ -9,6 +9,20 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
 }
+function changeStatus(url,id,e) {
+	var url = url+'/change-status-'+e.textContent.toLowerCase()+'/'+id;
+	$.get(url, function(data){ 
+		notify('Status Update!');
+		e.textContent = data.charAt(0).toUpperCase() + data.slice(1);
+		if(data == 'active') {
+			e.classList.remove('btn-danger');
+			e.classList.add('btn-success');
+		} else {
+			e.classList.remove('btn-success');
+			e.classList.add('btn-danger');
+		}
+	});
+}
 $(document).ready(function() {
 	let $btnSearch        = $("button#btn-search");
 	let $btnClearSearch	  = $("button#btn-clear");
@@ -136,14 +150,9 @@ $(document).ready(function() {
 			headers: {'X-CSRF-TOKEN': csrf_token},
 			success : function (result){
 				if(result) {
-					$.notify({
-						message: "Cập nhật giá trị thành công!"
-					}, {
-						delay: 500,
-						allow_dismiss: false
-					});
+					notify('Type Updated!');
 				}else {
-					console.log(result)
+					console.log(result);
 				}
 			}
 		});
@@ -167,11 +176,28 @@ $(document).ready(function() {
 		if(!confirm('Bạn có chắc muốn xóa phần tử?'))
 			return false;
 	});
+	$('input[name=ordering]').on('blur',function() {
+		var new_value = $(this).val();
+		var old_value = $(this).attr('value');
+		var url       = $(this).data('url');
+		var id 				= $(this).data('id');
+		if(isNaN(new_value)) {
+			warning('Please Insert Number');
+		}
+		if(old_value != new_value) {
+			$.ajax({
+				type: "GET",
+				url: url.replace('value',new_value),
+				dataType: "json",
+				success: function(result) {
+					if(result) notify('Ordering Updated!');
+				}
+			});
+		} 
+	});
 	//Init datepicker
 	$('.datepicker').datepicker({
 		format: 'dd-mm-yyyy',
 	});
-
-
 
 });

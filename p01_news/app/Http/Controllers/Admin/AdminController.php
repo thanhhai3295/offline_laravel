@@ -59,7 +59,8 @@ class AdminController extends Controller
       $params['id'] = $request->id;
       $params['status'] = $request->status;
       $this->model->saveItems($params,['task' => 'change-status']);
-      return redirect()->route($this->controllerName)->with('success', 'Status Updated!');;
+      if($params['status'] == 'active') echo 'inactive';
+      else echo 'active';
     }
     public function type(Request $request){
       $params['id'] = $request->id;

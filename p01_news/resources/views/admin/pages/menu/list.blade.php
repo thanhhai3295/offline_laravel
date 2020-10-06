@@ -24,7 +24,7 @@
             $index           = $key + 1;
             $class           = ($index % 2 == 0 ) ? 'event' : 'odd';
             $name            = Highlight::show($value['name'],$params['search'],'name');
-            $ordering        = Form::text('ordering',$value['ordering'],['class' => 'form-control']);
+            $ordering        = Form::text('ordering',$value['ordering'],['class' => 'form-control','data-id' => $id,'data-url' => route($controllerName.'/ordering',['ordering' => 'value','id' => $id])]);
             $link            = Highlight::show($value['link'],$params['search'],'link');
             $type            = Template::showItemSelect($controllerName,$id,$value['type'],'menu_type');
             $createdHistory  = Template::showItemHistory($value['created_by'],$value['created']);
@@ -39,7 +39,7 @@
               <p><strong>Link:</strong> {!! $link !!}</p>
             </td>
             <td width="5%">{!! $ordering !!}</td>
-            <td>{!! $status !!}</td>
+            <td width="5%">{!! $status !!}</td>
             <td width="10%">{!! $type !!}</td>
             <td>{!! $createdHistory !!}</td>           
             <td>{!! $modifiedHistory !!}</td>

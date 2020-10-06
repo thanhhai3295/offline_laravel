@@ -46,6 +46,7 @@ Route::group(['prefix' => $prefixAdmin,'middleware' => ['permission.admin']], fu
     Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
     Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
     Route::get('change-type-{menu_type}/{id}',$controller.'type')->where('id','[0-9]+')->name($controllerName.'/menu_type');
+    Route::get('change-ordering-{ordering}/{id}',$controller.'ordering')->where('id','[0-9]+')->name($controllerName.'/ordering');
   });
   // --------------- CATEGORY ---------------
   $prefix = 'category';

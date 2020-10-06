@@ -70,8 +70,9 @@
       $tmplStatus = Config::get('zvn.template.status');
       $statusValue = array_key_exists($statusValue,$tmplStatus) ? $statusValue : 'default';
       $currentStatus = $tmplStatus[$statusValue];
-      $link = Route($controllerName.'/status',['status' => $statusValue, 'id' => $id]);
-      $xhtml = '<a href="'.$link.'" type="button" class="btn btn-round '.$currentStatus['class'].'">'.$currentStatus['name'].'</a>';
+      $link = Route($controllerName);
+      $onClick = "onclick=changeStatus('$link',$id,this);";
+      $xhtml = '<a '.$onClick.' href="#" type="button" class="btn btn-round '.$currentStatus['class'].'" id="btn-status">'.$currentStatus['name'].'</a>';
       return $xhtml;
     }
     public static function showItemIsHome($controllerName,$id,$isHomeValue) {
@@ -85,7 +86,7 @@
     public static function showItemSelect($controllerName,$id,$displayValue,$fieldName) {
       $tmplDisplay = Config::get('zvn.template.'.$fieldName);
       $link = route($controllerName.'/'.$fieldName,[$fieldName => 'value_new','id' => $id]);
-      $xhtml = '<select name="select_change_attr" data-url="'.$link.'"  class="form-control">';
+      $xhtml = '<select name="select_change_attr_ajax" data-url="'.$link.'"  class="form-control">';
       foreach ($tmplDisplay as $key => $value) {
         $xhtmlSelected = ($key == $displayValue) ? 'selected="selected"' : '';
         $xhtml .= '<option '.$xhtmlSelected.' value="'.$key.'">'.$value['name'].'</option>';
