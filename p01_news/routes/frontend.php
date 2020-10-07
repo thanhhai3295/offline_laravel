@@ -1,5 +1,6 @@
 <?php 
   $prefixNews  = Config::get('zvn.url.prefix_news');
+  $prefixNews = null;
   Route::group(['prefix' => $prefixNews], function () {
     // --------------- DASHBOARD ---------------
     $prefix = '';
