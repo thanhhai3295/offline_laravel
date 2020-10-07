@@ -39,8 +39,9 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('web')
-                ->group(base_path('routes/web.php'));
-
+                ->group(base_path('routes/backend.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/frontend.php'));
             Route::prefix('api')
                 ->middleware('api')
                 ->group(base_path('routes/api.php'));
@@ -58,4 +59,6 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60);
         });
     }
+
+
 }
