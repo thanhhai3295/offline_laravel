@@ -33,6 +33,7 @@ class UserRequest extends FormRequest
         $condLevel    = '';
         $condStatus   = '';
         $condFullname = '';
+        $condCurrentPass     = '';
         if(isset($this->change_level)) $task = 'change-level';
         if(isset($this->edit_info)) $task = 'edit-info';
         if(isset($this->change_password)) $task = 'change-password';
@@ -55,6 +56,7 @@ class UserRequest extends FormRequest
                 break;
             case 'change-password':
                 $condPass = 'bail|required|between:5,100|confirmed';
+                $condCurrentPass = 'bail|required|between:5,100';
                 break;
             case 'change-level':
                 $condLevel = 'bail|in:admin,member';
@@ -70,7 +72,8 @@ class UserRequest extends FormRequest
             'status'   => $condStatus,
             'password' => $condPass,
             'level'    => $condLevel,
-            'avatar'   => $condAvatar
+            'avatar'   => $condAvatar,
+            'current_password' => $condCurrentPass
         ];
     }
     public function messages()

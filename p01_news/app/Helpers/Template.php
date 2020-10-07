@@ -120,6 +120,11 @@
         echo "<script>notify('$message')</script>";
         request()->session()->forget('success');
       }
+      if (request()->session()->has('error')) {
+        $message = session('error');
+        echo "<script>warning('$message')</script>";
+        request()->session()->forget('error');
+      }
     }
     public static function showSelectFilter($controllerName,$arrayData,$valueFilter,$field){
       $xhtml = '<form class="form-horizontal" role="form" enctype="multipart/form-data">';

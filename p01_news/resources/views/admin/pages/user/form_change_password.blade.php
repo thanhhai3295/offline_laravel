@@ -7,7 +7,12 @@
   $formLabelAttr = config('zvn.template.form_label');
   $elements = [
     [
-      'label' => Form::label('password', 'Password',$formLabelAttr),
+      'label' => Form::label('current_password', 'Current Password',$formLabelAttr),
+      'element' => Form::text('current_password', $item['current_password'],$formInputAttr),
+      'error' => 'current_password'
+    ],
+    [
+      'label' => Form::label('password', 'New Password',$formLabelAttr),
       'element' => Form::text('password', $item['password'],$formInputAttr),
       'error' => 'password'
     ],
