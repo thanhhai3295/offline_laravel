@@ -81,3 +81,25 @@ span.highlight{
     padding-left: 0;
     padding-right: 20px;
 }
+.analytics {
+    border: 1px solid #ddd;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.analytics span.count {
+    font-weight: bold;
+    color: #73879C;
+    font-size: 30px;
+}
+.analytics p {
+    color: #aaa;
+    font-size: 25px;
+    
+}
+.analytics span.icon {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 40px;
+}

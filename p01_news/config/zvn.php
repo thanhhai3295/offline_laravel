@@ -8,6 +8,13 @@
       'long_time' => 'H:m:s d/m/Y',
       'short_time'=> 'd/m/Y'
     ],
+    'dashboard' => [
+      'user' => ['icon' => 'fa fa-user'],
+      'category' => ['icon' => 'fa fa fa-building-o'],
+      'article' => ['icon' => 'fa fa-newspaper-o'],
+      'slider' => ['icon' => 'fa fa-sliders'],
+      'menu' => ['icon' => 'fa fa-bars'],
+    ],
     'template' => [
       'form_input' => ['class' => 'form-control col-md-6 col-xs-12'],
       'form_label' => ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'],

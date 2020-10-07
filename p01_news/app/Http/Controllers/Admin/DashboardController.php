@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\DashboardModel as MainModel;
 use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
@@ -12,9 +12,13 @@ class DashboardController extends Controller
     public function __construct() 
     {
       view()->share('controllerName',$this->controllerName);
+      $this->model = new MainModel();
     }
     public function index()
     {
-      return view($this->pathViewController.'index');
+      $countItems = $this->model->countItems();
+      return view($this->pathViewController.'index',[
+        'countItems' => $countItems
+      ]);
     }
 }
