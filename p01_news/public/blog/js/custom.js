@@ -23,6 +23,29 @@ $(document).ready(function()
 
 	*/
 
+	$('#sidebar_gold').load("http://127.0.0.1:8000/get-gold");
+	$('#sidebar_coin').load("http://127.0.0.1:8000/get-coin");
+	var page = 1;
+	$(window).scroll(function() {
+		if($(window).scrollTop() == $(document).height() - $(window).height()) {
+			$.ajax({
+				type: "POST",
+				url: "http://127.0.0.1:8000/get-news",
+				data: {page:page},
+				dataType: "json",
+				headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+				success: function(data) {
+					if(data['success']) {
+						page++;
+						$('#news_rss').append(data['html']);
+					} else {
+						$('#load_more').remove();
+					}
+				},
+			});
+		}
+	});
+	
 	var menu = $('.menu');
 	var burger = $('.hamburger');
 	var menuActive = false;

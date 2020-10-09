@@ -7,22 +7,23 @@
     </div>
     <div class="row world_row">
         <div class="col-lg-11">
-            <div class="row">
+            <div class="row" id="news_rss">
                 @foreach ($item as $item)
-                    @foreach ($item as $item02)
-                        <div class="col-lg-6">
-                            <div class="post_item post_v_small d-flex flex-column align-items-start justify-content-start">
-                                @include('news.pages.rss.child-index.image',['item' => $item02])
-                                @include('news.pages.rss.child-index.content',['item' => $item02,'lengthContent' => 300])
-                            </div>
+                    <div class="col-lg-6">
+                        <div class="post_item post_v_small d-flex flex-column align-items-start justify-content-start">
+                            @include('news.pages.rss.child-index.image',['item' => $item])
+                            @include('news.pages.rss.child-index.content',['item' => $item,'lengthContent' => 300])
                         </div>
-                    @endforeach
+                    </div>
                 @endforeach
             </div>
-            <div class="row">
+            <div class="text-center col-md-12" id="load_more">
+                <img src="{{asset('blog/images/circle.gif')}}" alt="">
+            </div>
+            {{-- <div class="row">
                 <div class="home_button mx-auto text-center"><a href="the-loai/giao-duc-2.html">Xem
                     thêm</a></div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

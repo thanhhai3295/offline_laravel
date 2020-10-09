@@ -13,8 +13,10 @@
                     <!-- Sidebar -->
                     <div class="col-lg-4">
                         <div class="sidebar">
-                        @include('news.pages.rss.child-index.gold',['item' => $itemsGold])
-                        @include('news.pages.rss.child-index.coin',['item' => $itemsCoin])
+                            <div id="sidebar_gold"><img src="{{asset('blog/images/circle.gif')}}" alt=""></div>
+                            <div id="sidebar_coin"><img src="{{asset('blog/images/circle.gif')}}" alt=""></div>
+                        {{-- @include('news.pages.rss.child-index.gold',['item' => $itemsGold])
+                        @include('news.pages.rss.child-index.coin',['item' => $itemsCoin]) --}}
                         </div>
                     </div>
                 </div>

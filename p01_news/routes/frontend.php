@@ -23,7 +23,10 @@
     $controllerName = 'Rss';
     Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
       $controller = 'App\Http\Controllers\News\\'.ucfirst($controllerName).'Controller@';
-      Route::get('tin-tuc-tong-hop.html',$controller.'index')->where('article_id','[0-9]+')->where('article_name','[0-9A-Za-z_-]+')->name($controllerName.'/index');
+      Route::get('tin-tuc-tong-hop.html',$controller.'index')->name($controllerName.'/index');
+      Route::get('get-gold',$controller.'getGold')->name($controllerName.'/getGold');
+      Route::get('get-coin',$controller.'getCoin')->name($controllerName.'/getCoin');
+      Route::post('get-news',$controller.'getNews')->name($controllerName.'/getNews');
     });
     // --------------- Tin Tuc Tong Hop ---------------
     $prefix = 'bai-viet';

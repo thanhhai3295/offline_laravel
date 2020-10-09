@@ -3,6 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Tech Mag template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="images/favicons.png" rel="icon" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ asset('blog/css/bootstrap-4.1.2/bootstrap.min.css') }}">
 <link href="{{ asset('blog/css/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
