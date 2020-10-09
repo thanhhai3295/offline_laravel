@@ -72,7 +72,19 @@
       Route::post('change-level',$controller.'level')->where('id','[0-9]+')->name($controllerName.'/change-level');
       Route::post('change-password',$controller.'change_password')->name($controllerName.'/change-password');
     });
-  
+    // --------------- RSS ---------------
+    $prefix = 'rss';
+    $controllerName = 'rss';
+    Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
+      $controller = 'App\Http\Controllers\admin\\'.ucfirst($controllerName).'Controller@';
+      Route::get('/',$controller.'index')->name($prefix);
+      Route::get('form/{id?}',$controller.'form')->where('id','[0-9]+')->name($controllerName.'/form');
+      Route::post('save',$controller.'save')->name($controllerName.'/save');
+      Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
+      Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
+      Route::get('change-source-{source}/{id}',$controller.'source')->where('id','[0-9]+')->name($controllerName.'/source');
+      Route::get('change-ordering-{ordering}/{id}',$controller.'ordering')->where('id','[0-9]+')->name($controllerName.'/ordering');
+    });
   });
   
 ?>

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="author" content="Kodinger">
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="{{asset('login/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('login/css/my-login.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('auth/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('auth/css/my-login.css')}}">
 </head>
 <body class="my-login-page">
 <section class="h-100">
@@ -17,8 +17,8 @@
     </div>
 </section>
 
-<script src="{{asset('login/js/jquery.min.js')}}"></script>
-<script src="{{asset('login/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('login/js/my-login.js')}}"></script>
+<script src="{{asset('auth/js/jquery.min.js')}}"></script>
+<script src="{{asset('auth/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('auth/js/my-login.js')}}"></script>
 </body>
 </html>

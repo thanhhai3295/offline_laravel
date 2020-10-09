@@ -20,6 +20,7 @@
             <li><a href="{{ route('article') }}"><i class="fa fa-newspaper-o"></i> Article</a></li>
             <li><a href="{{ route('slider') }}"><i class="fa fa-sliders"></i> Silders</a></li>
             <li><a href="{{ route('menu') }}"><i class="fa fa-bars"></i> Menu</a></li>
+            <li><a href="{{ route('rss') }}"><i class="fa fa-rss"></i> Rss</a></li>
         </ul>
     </div>
 </div>

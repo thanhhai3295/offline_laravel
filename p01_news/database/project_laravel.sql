@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2020 at 10:33 AM
+-- Generation Time: Oct 07, 2020 at 11:04 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -104,6 +104,33 @@ INSERT INTO `category` (`id`, `name`, `status`, `created`, `created_by`, `modifi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ordering` int(10) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id`, `name`, `link`, `ordering`, `created`, `created_by`, `modified`, `modified_by`, `status`, `type`) VALUES
+(1, 'Home', 'http://localhost/phpmyadmin/tbl_change.php?db=project_laravel&table=menu', 2, NULL, NULL, '2020-10-05 00:00:00', 'HaiDepTrai', 'active', 'category'),
+(2, 'test menu', 'http://127.0.0.1:8000/admin/slider/form', 123, '2020-10-05 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slider`
 --
 
@@ -160,7 +187,8 @@ INSERT INTO `user` (`id`, `username`, `email`, `fullname`, `password`, `avatar`,
 (3, 'user123', 'test@gmail.com', 'user123', 'e10adc3949ba59abbe56e057f20f883e', 'Hb1QSn1CL8.png', 'member', '2019-05-04 00:00:00', 'admin', '2019-05-04 08:47:07', 'hailan', 'inactive'),
 (4, 'user456', 'user456@gmail.com', 'user456', 'e10adc3949ba59abbe56e057f20f883e', 'J1uknUz0T6.png', 'admin', '2019-05-04 00:00:00', 'admin', '2019-05-04 08:47:10', 'hailan', 'active'),
 (5, 'test username', 'hai@gmail.com', '123456', NULL, 'XKoXJ8XUrP.png', 'member', '2020-09-28 00:00:00', 'HaiDepTrai', '2020-09-28 00:00:00', 'HaiDepTrai', 'active'),
-(6, 'haideptrai123', 'thanhhai3295@gmail.com', 'Lê Thanh Hải', 'd41d8cd98f00b204e9800998ecf8427e', 'HoJu0GUHgi.png', 'admin', '2020-09-28 00:00:00', 'HaiDepTrai', '2020-10-03 00:00:00', 'HaiDepTrai', 'active');
+(6, 'haideptrai123', 'thanhhai3295@gmail.com', 'Lê Thanh Hải', 'd41d8cd98f00b204e9800998ecf8427e', 'HoJu0GUHgi.png', 'admin', '2020-09-28 00:00:00', 'HaiDepTrai', '2020-10-03 00:00:00', 'HaiDepTrai', 'active'),
+(7, 'test username 123', 'aaaaa@gmail.com', 'Lê Thanh Hải', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'GjRMpRSogb.jpeg', 'member', NULL, NULL, '2020-10-06 00:00:00', 'HaiDepTrai', 'active');
 
 --
 -- Indexes for dumped tables
@@ -177,6 +205,12 @@ ALTER TABLE `article`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `slider`
@@ -207,6 +241,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
@@ -216,7 +256,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

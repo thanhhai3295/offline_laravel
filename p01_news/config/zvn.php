@@ -45,6 +45,10 @@
         'direct' => ['name' => 'Direct'],
         'category' => ['name' => 'Category'],
       ],
+      'source' => [
+        'vnexpress' => ['name' => 'Vnexpress'],
+        'cafebiz' => ['name' => 'Cafebiz'],
+      ],
       'search' => [
         'all'         => ['name' =>'Search By All'],
         'id'          => ['name' =>'Search By ID'],
@@ -75,7 +79,8 @@
         'category'  => ['all','id','name'],
         'article'  => ['all','name','content'],
         'user'  => ['all','username','email'],
-        'menu'  => ['all','name','link']
+        'menu'  => ['all','name','link'],
+        'rss'  => ['all','name','link']
       ],
       'button' => [
         'default' => ['edit','delete'],
@@ -83,7 +88,8 @@
         'category'  => ['edit','delete',],
         'article'  => ['edit','delete',],
         'user'  => ['edit'],
-        'menu'  => ['edit','delete',]
+        'menu'  => ['edit','delete',],
+        'rss'  => ['edit','delete',]
       ]
     ]
   ];

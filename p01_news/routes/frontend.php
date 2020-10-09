@@ -19,6 +19,13 @@
     });
   
     // --------------- ARTICLE ---------------
+    $prefix = '';
+    $controllerName = 'Rss';
+    Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
+      $controller = 'App\Http\Controllers\News\\'.ucfirst($controllerName).'Controller@';
+      Route::get('tin-tuc-tong-hop.html',$controller.'index')->where('article_id','[0-9]+')->where('article_name','[0-9A-Za-z_-]+')->name($controllerName.'/index');
+    });
+    // --------------- Tin Tuc Tong Hop ---------------
     $prefix = 'bai-viet';
     $controllerName = 'article';
     Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
