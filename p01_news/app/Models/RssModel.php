@@ -38,8 +38,8 @@ class RssModel extends AdminModel
             $result = $query->orderBy('id','desc')->paginate($params['pagination']['totalItemsPerPage']);  
             return $result;
         }
-        if($options['task'] == 'menu-list-items'){
-            $result = $this->select('id','name','link','type')->where('status','active')->orderBy('ordering','asc')->get()->toArray();
+        if($options['task'] == 'news-list-rss'){
+            $result = $this->select('link','source')->where('status','active')->orderBy('ordering','asc')->get()->toArray();
             return $result;
         }
 
