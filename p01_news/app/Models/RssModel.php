@@ -96,7 +96,7 @@ class RssModel extends AdminModel
     public function getItem($params = null,$options = null){
         $result = null;
         if($options['task'] == 'get-item'){
-            $result = $this->select('id','name','link','ordering','created','created_by','modified','modified_by','status')->where('id',$params['id'])->first();
+            $result = $this->select('id','name','source','link','ordering','status')->where('id',$params['id'])->first();
         }
         return $result;
     }
