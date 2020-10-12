@@ -22,7 +22,24 @@ $(document).ready(function()
 	1. Vars and Inits
 
 	*/
+	
+	var contact = localStorage.getItem('contact');
+	if(contact) {
+		contact = JSON.parse(contact);
+		$.each(contact, function(key, value) {
+			$('#form_'+key).val(value);
+		}); 
+	}
 
+	$('#btnContact').click(function() {
+		var contact = {
+			'email'		: $('#form_email').val(),
+			'phone' 	: $('#form_phone').val(),
+			'name'		: $('#form_name').val(),
+			'message' :	$('#form_message').val()
+		};
+		localStorage.setItem("contact", JSON.stringify(contact));
+	});
 	$('#sidebar_gold').load("http://127.0.0.1:8000/get-gold");
 	$('#sidebar_coin').load("http://127.0.0.1:8000/get-coin");
 	var page = 1;

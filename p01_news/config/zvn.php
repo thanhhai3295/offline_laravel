@@ -80,7 +80,8 @@
         'article'  => ['all','name','content'],
         'user'  => ['all','username','email'],
         'menu'  => ['all','name','link'],
-        'rss'  => ['all','name','link']
+        'rss'  => ['all','name','link'],
+        'contact'  => ['all','name','email'],
       ],
       'button' => [
         'default' => ['edit','delete'],
@@ -89,7 +90,8 @@
         'article'  => ['edit','delete',],
         'user'  => ['edit'],
         'menu'  => ['edit','delete',],
-        'rss'  => ['edit','delete',]
+        'rss'  => ['edit','delete',],
+        'contact'  => ['delete']
       ]
     ]
   ];

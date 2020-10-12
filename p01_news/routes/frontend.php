@@ -17,6 +17,14 @@
       $controller = 'App\Http\Controllers\News\\'.ucfirst($controllerName).'Controller@';
       Route::get('/{category_name}-{category_id}.html',$controller.'index')->where('category_id','[0-9]+')->where('category_name','[0-9A-Za-z_-]+')->name($controllerName.'/index');
     });
+    // --------------- CONTACT ---------------
+    $prefix = 'lien-he';
+    $controllerName = 'contact';
+    Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
+      $controller = 'App\Http\Controllers\News\\'.ucfirst($controllerName).'Controller@';
+      Route::get('/',$controller.'index')->name($controllerName.'/index');
+      Route::post('/save',$controller.'save')->name($controllerName.'/save');
+    });
   
     // --------------- ARTICLE ---------------
     $prefix = '';

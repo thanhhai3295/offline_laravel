@@ -66,6 +66,10 @@
               <p><i class="fa fa-clock-o"></i>  '.date(Config::get('zvn.format.short_time'),strtotime($time)).'</p>';
       return $xhtml;      
     }
+    public static function showTime($time){
+      $xhtml = '<p><i class="fa fa-clock-o"></i>  '.date(Config::get('zvn.format.long_time'),strtotime($time)).'</p>';
+      return $xhtml;
+    }
     public static function showItemStatus($controllerName,$id,$statusValue) {
       $tmplStatus = Config::get('zvn.template.status');
       $statusValue = array_key_exists($statusValue,$tmplStatus) ? $statusValue : 'default';

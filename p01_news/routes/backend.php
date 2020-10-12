@@ -85,6 +85,17 @@
       Route::get('change-source-{source}/{id}',$controller.'source')->where('id','[0-9]+')->name($controllerName.'/source');
       Route::get('change-ordering-{ordering}/{id}',$controller.'ordering')->where('id','[0-9]+')->name($controllerName.'/ordering');
     });
+    // --------------- CONTACT ---------------
+    $prefix = 'contact';
+    $controllerName = 'contact';
+    Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
+      $controller = 'App\Http\Controllers\admin\\'.ucfirst($controllerName).'Controller@';
+      Route::get('/',$controller.'index')->name($prefix);
+      Route::get('form/{id?}',$controller.'form')->where('id','[0-9]+')->name($controllerName.'/form');
+      Route::post('save',$controller.'save')->name($controllerName.'/save');
+      Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
+      Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
+    });
   });
   
 ?>
