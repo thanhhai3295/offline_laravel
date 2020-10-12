@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2020 at 11:04 AM
+-- Generation Time: Oct 10, 2020 at 10:43 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -126,7 +126,36 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`id`, `name`, `link`, `ordering`, `created`, `created_by`, `modified`, `modified_by`, `status`, `type`) VALUES
 (1, 'Home', 'http://localhost/phpmyadmin/tbl_change.php?db=project_laravel&table=menu', 2, NULL, NULL, '2020-10-05 00:00:00', 'HaiDepTrai', 'active', 'category'),
-(2, 'test menu', 'http://127.0.0.1:8000/admin/slider/form', 123, '2020-10-05 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', NULL);
+(2, 'test menu', 'http://127.0.0.1:8000/admin/slider/form', 123, '2020-10-05 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', NULL),
+(4, 'Tin Tức Tổng Hợp', 'http://127.0.0.1:8000/tin-tuc-tong-hop.html', 4, '2020-10-09 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', 'direct');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rss`
+--
+
+CREATE TABLE `rss` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ordering` int(11) NOT NULL,
+  `source` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rss`
+--
+
+INSERT INTO `rss` (`id`, `name`, `link`, `status`, `ordering`, `source`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(1, 'the gioi', 'https://vnexpress.net/rss/the-gioi.rss', 'active', 12, 'vnexpress', NULL, NULL, NULL, NULL),
+(3, 'phap luat', 'https://cafebiz.vn/phap-luat.rss', 'active', 3, 'cafebiz', '2020-10-10 00:00:00', 'HaiDepTrai', NULL, NULL),
+(4, 'thoi su', 'https://vnexpress.net/rss/thoi-su.rss', 'active', 3, 'vnexpress', '2020-10-10 00:00:00', 'HaiDepTrai', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -213,6 +242,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rss`
+--
+ALTER TABLE `rss`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `slider`
 --
 ALTER TABLE `slider`
@@ -244,7 +279,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `rss`
+--
+ALTER TABLE `rss`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `slider`

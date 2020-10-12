@@ -13,9 +13,8 @@ class AuthController extends Controller
     private $controllerName     = 'auth';
     private $params             = [];
     private $model;
-
     public function __construct()
-    {
+    {   
         view()->share('controllerName', $this->controllerName);
     }
 
@@ -33,7 +32,7 @@ class AuthController extends Controller
             if (!$userInfo)
                 return redirect()->route($this->controllerName . '/login')->with('news_notify', 'Tài khoản hoặc mật khẩu không chính xác!');
             $request->session()->put('userInfo', $userInfo);
-            return redirect()->route('home');
+            return redirect(request()->url);
         }
     }
 
