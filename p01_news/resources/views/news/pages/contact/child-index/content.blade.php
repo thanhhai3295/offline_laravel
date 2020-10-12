@@ -9,7 +9,7 @@
   <div class="col-md-6">
     <h4 class="mb5">Gửi tin nhắn cho chúng tôi</h4>
     <p style="line-height: 25px">Bạn chỉ đầy đủ thông tin cá nhân và vấn đề trao đổi với ZendVN vào form bên dưới, sau khi nhận được thông tin này chúng tôi sẽ liên hệ với các bạn trong thời gian sớm nhất.</p>
-    <form class="contact_form" id="contact_form" name="contact_form" action="" method="POST">
+    <form class="contact_form" id="contact_form" name="contact_form" action="{{route('contact/save')}}" method="POST">
       @csrf
       <div class="row">
         <div class="col-sm-12">
@@ -37,7 +37,7 @@
             <textarea id="form_message" name="message" class="form-control" rows="5"></textarea>
           </div>
           <div class="form-group ui_kit_button mb0">
-            <button type="button" class="btn dbxshad btn-md btn-thm circle white" id="btnContact">Gửi ngay</button>
+            <button type="submit" class="btn dbxshad btn-md btn-thm circle white" id="btnContact">Gửi ngay</button>
           </div>
         </div>
       </div>
