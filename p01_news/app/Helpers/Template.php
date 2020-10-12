@@ -119,15 +119,13 @@
       return $xhtml;
     }
     public static function showMessageNotify(){
-      if (session()->has('success')) {
+      if (session('success')) {
         $message = session('success');
-        session()->forget('success');
         echo "<script>notify('$message')</script>";
       }
-      if (session()->has('error')) {
+      if (session('error')) {
         $message = session('error');
         echo "<script>warning('$message')</script>";
-        session()->forget('error');
       }
     }
     public static function showSelectFilter($controllerName,$arrayData,$valueFilter,$field){
