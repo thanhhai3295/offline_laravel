@@ -23,9 +23,12 @@ class SettingRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        
-        switch ($this->key_value) {
+    {   
+        $task = '';
+        if($this->setting_email) $task = 'setting-email';
+        if($this->setting_main) $task = 'setting-main';
+        if($this->setting_social) $task = 'setting-social';
+        switch ($task) {
             case 'setting-main':        
                 return [
                     'thumb'     => 'bail|image|max:500',

@@ -4,7 +4,7 @@
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
   $formCkeditorAttr = config('zvn.template.form_ckeditor');
-  $inputHiddenTask = Form::hidden('key_value','setting-social');
+  $inputHiddenTask = Form::hidden('setting_social','value');
   $elements = [
     [
       'label' => Form::label('facebook', 'Facebook',$formLabelAttr),

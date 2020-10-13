@@ -4,7 +4,7 @@
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
   $formCkeditorAttr = config('zvn.template.form_ckeditor');
-  $inputHiddenTask = Form::hidden('key_value','setting-main');
+  $inputHiddenTask = Form::hidden('setting_main','value');
   $inputHiddenThumb = Form::hidden('thumb_current', $itemsMain['thumb']);
   $elements = [
     [
