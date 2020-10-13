@@ -195,9 +195,26 @@ $(document).ready(function() {
 			});
 		} 
 	});
-	//Init datepicker
-	$('.datepicker').datepicker({
-		format: 'dd-mm-yyyy',
+
+
+	var setting = localStorage.getItem('setting');
+	if(!setting) {
+		$('#setting_main').addClass('active');
+		$('[data = setting_main]').addClass('active');
+	} else {
+		$('#'+setting).addClass('active');
+		$('[data = '+setting+']').addClass('active');
+	}
+	
+	$('ul.nav.nav-tabs li').each(function(key, value) {
+		$(value).click(function(e) {
+			var setting = $(e.target).attr('href').replace('#','');
+			localStorage.setItem('setting',setting);
+		});
 	});
+	//Init datepicker
+	// $('.datepicker').datepicker({
+	// 	format: 'dd-mm-yyyy',
+	// });
 
 });

@@ -28,9 +28,9 @@
   
   <div class="col-md-12">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#setting_main" data-toggle="tab" aria-expanded="true">Cấu Hình Chung <span class="glyphicon glyphicon-cog"></span></a></li>
-      <li><a href="#setting_email" data-toggle="tab">Cấu Hình Email <span class="glyphicon glyphicon-envelope"></span></a></li>
-      <li><a href="#setting_social" data-toggle="tab">Social Network <span class="glyphicon glyphicon-signal"></span></a></li>
+      <li data="setting_main"><a href="#setting_main" data-toggle="tab" aria-expanded="true">Cấu Hình Chung <span class="glyphicon glyphicon-cog"></span></a></li>
+      <li data="setting_email"><a href="#setting_email" data-toggle="tab">Cấu Hình Email <span class="glyphicon glyphicon-envelope"></span></a></li>
+      <li data="setting_social"><a href="#setting_social" data-toggle="tab">Social Network <span class="glyphicon glyphicon-signal"></span></a></li>
     </ul>
   </div>
 

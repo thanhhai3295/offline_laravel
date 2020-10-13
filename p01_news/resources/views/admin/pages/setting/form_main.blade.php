@@ -45,7 +45,7 @@
     ]
   ];
 @endphp
-<div class="tab-pane active" id="setting_main">
+<div class="tab-pane" id="setting_main">
   <div class="x_panel">
     @include('admin.templates.x_title',['title' => 'Form'])
     <div class="x_content">
