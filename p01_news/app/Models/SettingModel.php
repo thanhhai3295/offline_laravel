@@ -16,26 +16,28 @@ class SettingModel extends AdminModel
     }
 
     public function saveItems($params = null,$options = null){
-        if($options['task'] == 'save-main'){
-            $params['thumb'] = $this->uploadThumb($params['thumb']);
-            $tmp['value'] = json_encode($this->prepareParams($params));
-            $tmp['key_value'] = 'setting-main';
-            $tmp['created_by'] = 'HaiDepTrai';
-            $tmp['created'] = date('Y-m-d'); 
-            $params = $tmp;
-            $this->insert($params);
-        }
+        // if($options['task'] == 'save-main'){
+        //     $params['thumb'] = $this->uploadThumb($params['thumb']);
+        //     $tmp['value'] = json_encode($this->prepareParams($params));
+        //     $tmp['key_value'] = 'setting-main';
+        //     $tmp['created_by'] = 'HaiDepTrai';
+        //     $tmp['created'] = date('Y-m-d'); 
+        //     $params = $tmp;
+        //     $this->insert($params);
+        // }
         if($options['task'] == 'edit-item'){
             $key_value = $params['key_value'];
-            if(!empty($params['thumb'])) {
-                Storage::disk('zvn_store_images')->delete("$this->folderUpload/".$params['thumb_current']);
-                $params['thumb'] = $this->uploadThumb($params['thumb']);
-            } else {
-                $params['thumb'] = $params['thumb_current'];
+            if($key_value == 'setting-main') {
+                if(!empty($params['thumb'])) {
+                    Storage::disk('zvn_store_images')->delete("$this->folderUpload/".$params['thumb_current']);
+                    $params['thumb'] = $this->uploadThumb($params['thumb']);
+                } else {
+                    $params['thumb'] = $params['thumb_current'];
+                }
             }
             $tmp['value'] = json_encode($this->prepareParams($params));
-            $params['modified_by'] = 'HaiDepTrai';
-            $params['modified'] = date('Y-m-d');
+            $tmp['modified_by'] = 'HaiDepTrai';
+            $tmp['modified'] = date('Y-m-d');
             $params = $tmp;
             $this->where('key_value',$key_value)->update($this->prepareParams($params));
         }

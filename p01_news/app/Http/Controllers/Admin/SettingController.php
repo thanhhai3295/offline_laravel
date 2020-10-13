@@ -18,11 +18,15 @@ class SettingController extends Controller
     public function form()
     { 
       $itemsMain = $this->model->getItem(null,['task' => 'setting-main']);
+      $itemsEmail = $this->model->getItem(null,['task' => 'setting-email']);
+      $itemsSocial = $this->model->getItem(null,['task' => 'setting-social']);
       return view($this->pathViewController.'form',[
-        'itemsMain' => $itemsMain
+        'itemsMain' => $itemsMain,
+        'itemsEmail'=> $itemsEmail,
+        'itemsSocial'=> $itemsSocial
       ]);
     }
-    public function save(Request $request) {
+    public function save(MainRequest $request) {
       $params = $request->all();
       $this->model->saveItems($params,['task' => 'edit-item']);
       return redirect()->route($this->controllerName)->with('success','Save Success!');

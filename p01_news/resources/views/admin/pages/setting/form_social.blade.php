@@ -4,16 +4,26 @@
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
   $formCkeditorAttr = config('zvn.template.form_ckeditor');
-
+  $inputHiddenTask = Form::hidden('key_value','setting-social');
   $elements = [
     [
-      'label' => Form::label('name', 'Name',$formLabelAttr),
-      'element' => Form::text('name', '',$formInputAttr),
-      'error' => 'name'
+      'label' => Form::label('facebook', 'Facebook',$formLabelAttr),
+      'element' => Form::text('facebook', $itemsSocial['facebook'],$formInputAttr),
+      'error' => 'facebook'
+    ],
+    [
+      'label' => Form::label('youtube', 'Youtube',$formLabelAttr),
+      'element' => Form::text('youtube', $itemsSocial['youtube'],$formInputAttr),
+      'error' => 'youtube'
+    ],
+    [
+      'label' => Form::label('twitter', 'Twitter',$formLabelAttr),
+      'element' => Form::text('twitter', $itemsSocial['twitter'],$formInputAttr),
+      'error' => 'twitter'
     ],
     [
       'type' => 'btn-submit',
-      'element' => Form::submit('Save',['class' => 'btn btn-success'])
+      'element' => $inputHiddenTask.Form::submit('Save',['class' => 'btn btn-success'])
     ]
   ];
 @endphp
