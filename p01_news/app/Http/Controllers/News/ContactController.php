@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use App\Models\ContactModel as MainModel;
+use App\Models\SettingModel;
 use Illuminate\Http\Request;
+use App\Helpers\Mailer;
 class ContactController extends Controller
 {
     private $controllerName     = 'contact';
@@ -30,6 +32,10 @@ class ContactController extends Controller
       if($request->method() == 'POST') {
         $params = $request->all();
         $this->model->saveItems($params,['task' => 'add-item']);
+        $SettingModel = new SettingModel();
+        $mailInfo = $SettingModel->getItem(null,['task' => 'setting-email']);
+        Mailer::sendMail($mailInfo);
+
         return redirect()->route($this->controllerName.'/index')->with('news_success','Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
       }
     }
