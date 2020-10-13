@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ContactModel as MainModel;
 use App\Models\SettingModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest as MainRequest;
 use App\Helpers\Mailer;
 class ContactController extends Controller
 {
@@ -23,19 +24,16 @@ class ContactController extends Controller
         
       ]);
     }
-    public function save(Request $request)
+    public function save(MainRequest $request)
     { 
-      $request->validate([
-        'name' => 'bail|required|min:6',
-        'phone' => 'bail|required|numeric',
-      ]);
       if($request->method() == 'POST') {
         $params = $request->all();
         $this->model->saveItems($params,['task' => 'add-item']);
-        $SettingModel = new SettingModel();
-        $mailInfo = $SettingModel->getItem(null,['task' => 'setting-email']);
-        Mailer::sendMail($mailInfo);
-
+        if(!empty($params['email'])) {
+          $SettingModel = new SettingModel();
+          $mailInfo = $SettingModel->getItem(null,['task' => 'setting-email']);
+          Mailer::sendMail($mailInfo);
+        }
         return redirect()->route($this->controllerName.'/index')->with('news_success','Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
       }
     }

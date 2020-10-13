@@ -22,6 +22,7 @@
         <div class="col-sm-12"><div class="form-group">
           <label for="exampleInputEmail">Email</label>
           <input id="form_email" name="email" class="form-control email" type="email">
+          <span class="text-danger">{{$error['email'][0]??''}}</span>
         </div>
         </div>
         <div class="col-sm-12">

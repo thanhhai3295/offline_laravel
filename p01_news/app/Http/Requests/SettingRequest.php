@@ -39,6 +39,7 @@ class SettingRequest extends FormRequest
             case 'setting-email':
                 return [
                     'email'     => 'bail|required|email',
+                    'cc'        => 'nullable|email',
                     'title'     => 'bail|required|min:5',
                     'content'   => 'bail|required|min:5'
                 ];

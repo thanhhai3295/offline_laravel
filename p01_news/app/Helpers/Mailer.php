@@ -24,7 +24,7 @@ class Mailer {
             //Recipients
             $mail->setFrom('pstaleal@gmail.com', 'HaiDepTrai');
             $mail->addAddress($params['email']);
-            // $mail->addCC('cc@example.com');
+            $mail->addCC($params['cc']);
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = $params['title'];
