@@ -96,6 +96,15 @@
       Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
       Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
     });
+    // --------------- SETTING ---------------
+    $prefix = 'setting';
+    $controllerName = 'setting';
+    Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
+      $controller = 'App\Http\Controllers\admin\\'.ucfirst($controllerName).'Controller@';
+      Route::get('/',$controller.'form')->name($prefix);
+      Route::post('save',$controller.'save')->name($controllerName.'/save');
+      
+    });
   });
   
 ?>
