@@ -15,7 +15,6 @@ function changeStatus(e) {
 	$.get(url, function(data){ 
 		data = JSON.parse(data);
 		if(data['success']) {
-			console.log(data);
 			$(e).attr('class','btn btn-round '+data['class']);
 			$(e).text(data['name']);
 			$(e).attr('data-url',url.replace(status,data['status']));

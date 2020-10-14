@@ -28,7 +28,7 @@
             $phone            = Highlight::show($value['phone'],$params['search'],'phone');    
             $message            = Highlight::show($value['message'],$params['search'],'message');    
             $created          = Template::showTime($value['created']);
-            $status          = Template::showItemStatus($controllerName,$id,$value['status']);
+            $status          = Template::showItemContact($controllerName,$id,$value['status']);
             $listBtnAction   = Template::showButtonAction($controllerName,$id);
           @endphp 
           <tr class="{{ $class }} pointer">

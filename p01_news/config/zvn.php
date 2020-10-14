@@ -25,6 +25,10 @@
         'inactive'  => ['class' => 'btn-danger',  'name' =>'Inactive'],
         'default'   => ['class' => 'btn-info',    'name' =>'--- Choose Status ---']
       ],
+      'contact' => [
+        'active'    => ['class' => 'btn-danger', 'name' =>'Chưa Gọi'],
+        'inactive'  => ['class' => 'btn-success',  'name' =>'Đã Gọi'],
+      ],
       'is_home' => [
         '1'       => ['class' => 'btn-dark', 'name' =>'Show'],
         '0'    => ['class' => 'btn-warning', 'name' =>'Hide']

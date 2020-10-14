@@ -79,6 +79,15 @@
       $xhtml = '<a '.$onClick.' href="#" data-status="'.$statusValue.'" data-url="'.route($controllerName.'/status',['id' => $id,'status' => $statusValue]).'" type="button" class="btn btn-round '.$currentStatus['class'].'" id="btn-status">'.$currentStatus['name'].'</a>';
       return $xhtml;
     }
+    public static function showItemContact($controllerName,$id,$statusValue) {
+      $tmplStatus = Config::get('zvn.template.contact');
+      $statusValue = array_key_exists($statusValue,$tmplStatus) ? $statusValue : 'default';
+      $currentStatus = $tmplStatus[$statusValue];
+      $link = Route($controllerName);
+      $onClick = "onclick=changeStatus(this);";
+      $xhtml = '<a '.$onClick.' href="#" data-status="'.$statusValue.'" data-url="'.route($controllerName.'/status',['id' => $id,'status' => $statusValue]).'" type="button" class="btn btn-round '.$currentStatus['class'].'" id="btn-status">'.$currentStatus['name'].'</a>';
+      return $xhtml;
+    }
     public static function showItemIsHome($controllerName,$id,$isHomeValue) {
       $tmplIsHome = Config::get('zvn.template.is_home');
       $isHomeValue = array_key_exists($isHomeValue,$tmplIsHome) ? $isHomeValue : '1';
