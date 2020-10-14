@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2020 at 10:43 AM
+-- Generation Time: Oct 14, 2020 at 09:48 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -104,6 +104,69 @@ INSERT INTO `category` (`id`, `name`, `status`, `created`, `created_by`, `modifi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` int(15) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `message`, `status`, `created`) VALUES
+(1, 'thanh hai', 123456789, 'thanhhai@gmail.com', 'test test', 'active', '2020-10-14 00:00:00'),
+(2, 'test test', 1234567, 'thanhhai3295@gmail.com', 'cdefghba', 'active', '2020-10-12 00:00:00'),
+(3, 'thanh hai', 1234567, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-12 00:00:00'),
+(4, 'thanh hai', 1234567, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-12 00:00:00'),
+(5, 'thanh hai', 1234567, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-12 00:00:00'),
+(6, 'test test', 123456, 'thanhhai3295@gmail.com', NULL, 'active', '2020-10-12 00:00:00'),
+(7, 'test test', 798121502, 'thanhhai3295@gmail.com', '123', 'active', '2020-10-12 00:00:00'),
+(8, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-12 00:00:00'),
+(9, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(10, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(11, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(12, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(13, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(14, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(15, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(16, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(17, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(18, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(19, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(20, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(21, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(22, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(23, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(24, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(25, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(26, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(27, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(28, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(29, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(30, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(31, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(32, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(33, 'test test', 12345, NULL, 'test', 'active', '2020-10-13 00:00:00'),
+(34, 'test test', 12345, NULL, 'test', 'active', '2020-10-13 00:00:00'),
+(35, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(36, 'test test', 12345, NULL, 'test', 'active', '2020-10-13 00:00:00'),
+(37, 'test test', 12345, 'thanhhai3295@gmail.com', 'test', 'active', '2020-10-13 00:00:00'),
+(38, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
+(39, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
+(40, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
+(41, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menu`
 --
 
@@ -127,7 +190,8 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id`, `name`, `link`, `ordering`, `created`, `created_by`, `modified`, `modified_by`, `status`, `type`) VALUES
 (1, 'Home', 'http://localhost/phpmyadmin/tbl_change.php?db=project_laravel&table=menu', 2, NULL, NULL, '2020-10-05 00:00:00', 'HaiDepTrai', 'active', 'category'),
 (2, 'test menu', 'http://127.0.0.1:8000/admin/slider/form', 123, '2020-10-05 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', NULL),
-(4, 'Tin Tức Tổng Hợp', 'http://127.0.0.1:8000/tin-tuc-tong-hop.html', 4, '2020-10-09 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', 'direct');
+(4, 'Tin Tức Tổng Hợp', 'http://127.0.0.1:8000/tin-tuc-tong-hop.html', 4, '2020-10-09 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', 'direct'),
+(5, 'Liên Hệ', 'http://127.0.0.1:8000/lien-he', 10, '2020-10-12 00:00:00', 'HaiDepTrai', '2020-10-14 00:00:00', 'HaiDepTrai', 'active', 'direct');
 
 -- --------------------------------------------------------
 
@@ -155,7 +219,33 @@ CREATE TABLE `rss` (
 INSERT INTO `rss` (`id`, `name`, `link`, `status`, `ordering`, `source`, `created`, `created_by`, `modified`, `modified_by`) VALUES
 (1, 'the gioi', 'https://vnexpress.net/rss/the-gioi.rss', 'active', 12, 'vnexpress', NULL, NULL, NULL, NULL),
 (3, 'phap luat', 'https://cafebiz.vn/phap-luat.rss', 'active', 3, 'cafebiz', '2020-10-10 00:00:00', 'HaiDepTrai', NULL, NULL),
-(4, 'thoi su', 'https://vnexpress.net/rss/thoi-su.rss', 'active', 3, 'vnexpress', '2020-10-10 00:00:00', 'HaiDepTrai', NULL, NULL);
+(4, 'thoi su', 'https://vnexpress.net/rss/thoi-su.rss', 'active', 3, 'vnexpress', '2020-10-10 00:00:00', 'HaiDepTrai', '2020-10-12 00:00:00', 'HaiDepTrai');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL,
+  `key_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `key_value`, `value`, `status`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(1, 'setting-main', '{\"hotline\":\"123456\",\"copyright\":\"abc\",\"time_work\":\"aaa\",\"address\":\"ccc\",\"intro\":\"<p>test test test<\\/p>\",\"thumb\":\"Jqgbd4jYsh.png\"}', NULL, '2020-10-13 00:00:00', 'HaiDepTrai', NULL, NULL),
+(2, 'setting-email', '{\"email\":\"pstaleal@gmail.com\",\"password\":\"hebvdkeyumpkhkhg\",\"cc\":\"pstaleal2@gmail.com\",\"title\":\"title\",\"content\":\"<p><strong>content<\\/strong><\\/p>\",\"setting_email\":\"value\"}', NULL, NULL, NULL, '2020-10-14 00:00:00', 'HaiDepTrai'),
+(3, 'setting-social', '{\"facebook\":\"https:\\/\\/zendvn.com\\/lien-he\",\"youtube\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/setting\",\"twitter\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/setting\",\"setting_social\":\"value\"}', NULL, NULL, NULL, '2020-10-14 00:00:00', 'HaiDepTrai');
 
 -- --------------------------------------------------------
 
@@ -236,6 +326,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
@@ -245,6 +341,12 @@ ALTER TABLE `menu`
 -- Indexes for table `rss`
 --
 ALTER TABLE `rss`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -276,16 +378,28 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `rss`
 --
 ALTER TABLE `rss`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `slider`
