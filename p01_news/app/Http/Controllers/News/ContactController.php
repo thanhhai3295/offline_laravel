@@ -36,9 +36,6 @@ class ContactController extends Controller
         if(!empty($params['email'])) {
           $SettingModel = new SettingModel();
           $mailInfo = $SettingModel->getItem(null,['task' => 'setting-email']);
-          echo '<pre>';
-          print_r($mailInfo);
-          echo '</pre>';
           Mailer::sendMail($mailInfo,$params['email']);
         }
       return redirect()->route($this->controllerName.'/index')->with('news_success','Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
