@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Config;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryModel;
 use Illuminate\Http\Request;
@@ -60,8 +60,15 @@ class AdminController extends Controller
       $params['id'] = $request->id;
       $params['status'] = $request->status;
       $this->model->saveItems($params,['task' => 'change-status']);
-      if($params['status'] == 'active') echo 'inactive';
-      else echo 'active';
+
+      $tmplStatus = Config::get('zvn.template.status');
+      
+      $currentStatus = ($params['status'] == 'active') ? 'inactive' : 'active';
+      $data['name'] = $tmplStatus[$currentStatus]['name'];
+      $data['status'] = $currentStatus;
+      $data['class'] = $tmplStatus[$currentStatus]['class'];
+      $data['success'] = true;
+      echo \json_encode($data);
     }
     public function type(Request $request){
       $params['id'] = $request->id;

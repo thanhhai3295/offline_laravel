@@ -9,17 +9,18 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
 }
-function changeStatus(url,id,e) {
-	var url = url+'/change-status-'+e.textContent.toLowerCase()+'/'+id;
+function changeStatus(e) {
+	let url = e.getAttribute('data-url');
+	let status = e.getAttribute('data-status');
 	$.get(url, function(data){ 
-		notify('Status Update!');
-		e.textContent = data.charAt(0).toUpperCase() + data.slice(1);
-		if(data == 'active') {
-			e.classList.remove('btn-danger');
-			e.classList.add('btn-success');
-		} else {
-			e.classList.remove('btn-success');
-			e.classList.add('btn-danger');
+		data = JSON.parse(data);
+		if(data['success']) {
+			console.log(data);
+			$(e).attr('class','btn btn-round '+data['class']);
+			$(e).text(data['name']);
+			$(e).attr('data-url',url.replace(status,data['status']));
+			$(e).attr('data-status',data['status']);
+			notify('Status Update!');
 		}
 	});
 }
@@ -141,7 +142,6 @@ $(document).ready(function() {
 	$selectChangeAttrAjax.on('change', function() {
 		let select_value = $(this).val();
 		let $url = $(this).data('url');
-		console.log($url.replace('value_new', select_value));
 		let csrf_token = $("input[name=csrf-token]").val();
 		$.ajax({
 			url : $url.replace('value_new', select_value),

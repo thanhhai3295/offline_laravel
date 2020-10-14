@@ -75,8 +75,8 @@
       $statusValue = array_key_exists($statusValue,$tmplStatus) ? $statusValue : 'default';
       $currentStatus = $tmplStatus[$statusValue];
       $link = Route($controllerName);
-      $onClick = "onclick=changeStatus('$link',$id,this);";
-      $xhtml = '<a '.$onClick.' href="#" type="button" class="btn btn-round '.$currentStatus['class'].'" id="btn-status">'.$currentStatus['name'].'</a>';
+      $onClick = "onclick=changeStatus(this);";
+      $xhtml = '<a '.$onClick.' href="#" data-status="'.$statusValue.'" data-url="'.route($controllerName.'/status',['id' => $id,'status' => $statusValue]).'" type="button" class="btn btn-round '.$currentStatus['class'].'" id="btn-status">'.$currentStatus['name'].'</a>';
       return $xhtml;
     }
     public static function showItemIsHome($controllerName,$id,$isHomeValue) {
