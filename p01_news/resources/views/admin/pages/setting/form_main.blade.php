@@ -6,6 +6,7 @@
   $formCkeditorAttr = config('zvn.template.form_ckeditor');
   $inputHiddenTask = Form::hidden('setting_main','value');
   $inputHiddenThumb = Form::hidden('thumb_current', $itemsMain['thumb']);
+  $inputHiddenKey = Form::hidden('key_value','setting-main');
   $elements = [
     [
       'label' => Form::label('thumb', 'Thumb',$formLabelAttr),
@@ -41,7 +42,7 @@
     ],
     [
       'type' => 'btn-submit',
-      'element' => $inputHiddenTask.$inputHiddenThumb.Form::submit('Save',['class' => 'btn btn-success'])
+      'element' => $inputHiddenKey.$inputHiddenTask.$inputHiddenThumb.Form::submit('Save',['class' => 'btn btn-success'])
     ]
   ];
 @endphp

@@ -20,8 +20,12 @@ class ContactController extends Controller
     }
     public function index(Request $request)
     { 
+      $SettingModel = new SettingModel();
+      $itemsInfo = $SettingModel->getItem(null,['task' => 'setting-main']);
+      $itemsEmail = $SettingModel->getItem(null,['task' => 'setting-email']);
       return view($this->pathViewController.'index',[
-        
+        'itemsInfo' => $itemsInfo,
+        'itemsEmail'=> $itemsEmail
       ]);
     }
     public function save(MainRequest $request)
@@ -32,9 +36,12 @@ class ContactController extends Controller
         if(!empty($params['email'])) {
           $SettingModel = new SettingModel();
           $mailInfo = $SettingModel->getItem(null,['task' => 'setting-email']);
-          Mailer::sendMail($mailInfo);
+          echo '<pre>';
+          print_r($mailInfo);
+          echo '</pre>';
+          Mailer::sendMail($mailInfo,$params['email']);
         }
-        return redirect()->route($this->controllerName.'/index')->with('news_success','Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
+      return redirect()->route($this->controllerName.'/index')->with('news_success','Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
       }
     }
     

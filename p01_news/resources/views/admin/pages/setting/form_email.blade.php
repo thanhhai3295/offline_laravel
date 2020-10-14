@@ -5,11 +5,17 @@
   $formLabelAttr = config('zvn.template.form_label');
   $formCkeditorAttr = config('zvn.template.form_ckeditor');
   $inputHiddenTask = Form::hidden('setting_email','value');
+  $inputHiddenKey = Form::hidden('key_value','setting-email');
   $elements = [
     [
       'label' => Form::label('email', 'Email',$formLabelAttr),
       'element' => Form::text('email', $itemsEmail['email'],$formInputAttr),
       'error' => 'email'
+    ],
+    [
+      'label' => Form::label('password', 'Password',$formLabelAttr),
+      'element' => Form::text('password', $itemsEmail['password'],$formInputAttr),
+      'error' => 'password'
     ],
     [
       'label' => Form::label('cc', 'CC',$formLabelAttr),
@@ -28,7 +34,7 @@
     ],
     [
       'type' => 'btn-submit',
-      'element' => $inputHiddenTask.Form::submit('Save',['class' => 'btn btn-success'])
+      'element' => $inputHiddenKey.$inputHiddenTask.Form::submit('Save',['class' => 'btn btn-success'])
     ]
   ];
 @endphp
