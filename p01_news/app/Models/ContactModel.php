@@ -66,7 +66,7 @@ class ContactModel extends AdminModel
             $this->where('id',$params['id'])->update(['status' => $status]);
         }
         if($options['task'] == 'add-item'){
-            $params['created'] = date('Y-m-d');
+            $params['created'] = date('Y-m-d H:m:s');
             $params['status'] = 'active';
             $this->insert($this->prepareParams($params));
         }

@@ -32,7 +32,7 @@ class SettingRequest extends FormRequest
             case 'setting-main':        
                 return [
                     'thumb'     => 'bail|image|max:500',
-                    'hotline'   => 'bail|required|number|min:9',
+                    'hotline'   => 'bail|required|numeric|min:9',
                     'copyright' => 'bail|required',
                     'time_work' => 'bail|required',
                     'address'   => 'bail|required',
