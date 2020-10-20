@@ -7,6 +7,7 @@
     $controllerName = 'home';
     Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
       $controller = 'App\Http\Controllers\News\\'.ucfirst($controllerName).'Controller@';
+      Log::info('This is info log');
       Route::get('/',$controller.'index')->name($controllerName);
     });
   

@@ -103,8 +103,19 @@
       $controller = 'App\Http\Controllers\admin\\'.ucfirst($controllerName).'Controller@';
       Route::get('/',$controller.'form')->name($prefix);
       Route::post('save',$controller.'save')->name($controllerName.'/save');
-      
     });
+    // --------------- NESTED SET ---------------
+    $prefix = 'nestedset';
+    $controllerName = 'nestedset';
+    Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
+      $controller = 'App\Http\Controllers\admin\\'.ucfirst($controllerName).'Controller@';
+      Route::get('/',$controller.'index')->name($prefix);
+      Route::get('form/{id?}',$controller.'form')->where('id','[0-9]+')->name($controllerName.'/form');
+      Route::post('save',$controller.'save')->name($controllerName.'/save');
+      Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
+      Route::get('change-status-{status}/{id}',$controller.'contact')->where('id','[0-9]+')->name($controllerName.'/status');
+    });
+
   });
   
 ?>
