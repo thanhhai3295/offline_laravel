@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 09:48 AM
+-- Generation Time: Oct 21, 2020 at 11:58 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -162,7 +162,8 @@ INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `message`, `status`, `cre
 (38, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
 (39, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
 (40, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
-(41, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00');
+(41, 'test test', 12345, 'pstaleal4@gmail.com', 'test', 'active', '2020-10-14 00:00:00'),
+(43, 'aaaaaaaa', 12345567, 'pstaleal4@gmail.com', 'test test', 'active', '2020-10-14 08:10:48');
 
 -- --------------------------------------------------------
 
@@ -192,6 +193,39 @@ INSERT INTO `menu` (`id`, `name`, `link`, `ordering`, `created`, `created_by`, `
 (2, 'test menu', 'http://127.0.0.1:8000/admin/slider/form', 123, '2020-10-05 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', NULL),
 (4, 'Tin Tức Tổng Hợp', 'http://127.0.0.1:8000/tin-tuc-tong-hop.html', 4, '2020-10-09 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', 'direct'),
 (5, 'Liên Hệ', 'http://127.0.0.1:8000/lien-he', 10, '2020-10-12 00:00:00', 'HaiDepTrai', '2020-10-14 00:00:00', 'HaiDepTrai', 'active', 'direct');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nestedset`
+--
+
+CREATE TABLE `nestedset` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `_lft` int(11) NOT NULL,
+  `_rgt` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  `ordering` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `nestedset`
+--
+
+INSERT INTO `nestedset` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `level`, `ordering`, `created`, `created_by`, `modified`, `modified_by`) VALUES
+(1, 'aaa', 1, 2, NULL, NULL, 1, '2020-10-20 09:16:35', 'HaiDepTrai', '2020-10-21 09:14:43', NULL),
+(2, 'bbb', 3, 10, NULL, NULL, NULL, '2020-10-20 09:18:46', NULL, '2020-10-20 09:18:46', NULL),
+(3, 'test test', 4, 9, 2, NULL, NULL, '2020-10-20 11:15:43', NULL, '2020-10-20 11:15:43', NULL),
+(4, 'test test test', 5, 8, 3, NULL, NULL, '2020-10-20 11:17:43', NULL, '2020-10-20 11:17:43', NULL),
+(5, 'test test test test', 6, 7, 4, NULL, NULL, '2020-10-20 11:18:31', NULL, '2020-10-20 11:18:31', NULL),
+(6, 'groot', 11, 14, NULL, NULL, NULL, '2020-10-20 12:05:02', NULL, '2020-10-20 12:05:02', NULL),
+(7, 'i am groot', 12, 13, 6, NULL, NULL, '2020-10-21 09:09:50', NULL, '2020-10-21 09:09:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -338,6 +372,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nestedset`
+--
+ALTER TABLE `nestedset`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rss`
 --
 ALTER TABLE `rss`
@@ -381,13 +421,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `nestedset`
+--
+ALTER TABLE `nestedset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `rss`
