@@ -2,6 +2,7 @@
   namespace App\Helpers;
   use Config;
   use Route;
+  use App\Models\NestedsetModel as NestedSet;
   class Template {
     public static function showButtonFilter($controllerName,$countByStatus,$currentFilterStatus,$paramsSearch){
       $xhtml = null;
@@ -154,6 +155,30 @@
       $prefix = ($length == 0) ? '' : $prefix;
       $content = str_replace(['<p>','</p>'],'',$content);
       return preg_replace('/\s+?(\S+)?$/','',substr($content,0,$length)).$prefix;
+    }
+    public static function showTree($controllerName,$items,$prefix = ''){
+      foreach ($items as $item) {
+        $name = PHP_EOL.$prefix.' '.$item->name;
+        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
+        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
+        $node = Nestedset::find($item->id);
+        if(!$node->getPrevSibling()) $arrowUp = '';
+        if(!$node->getNextSibling()) $arrowDown = '';
+        $ordering = $arrowUp.$arrowDown.'<input class="text-center form-control" type="text" value="'.$item->ordering.'" style="width:10%;display:inline">';
+        $xhtml = '<tr>';
+        $xhtml .= '<td><input type="checkbox" class="form-check-input"></td>
+                  <td style="font-size:20px">'.$name.'</td>
+                  <td>'.$ordering.'</td>
+                  <td>'.$item->created.'</td>
+                  <td>'.$item->created_by.'</td>
+                  <td>'.$item->modified.'</td>
+                  <td>'.$item->modified_by.'</td>
+                  <td>NULL</td>
+                  <td>'.$item->id.'</td>';
+        $xhtml .= '</tr>';
+        echo $xhtml;
+          self::showTree($controllerName,$item->children, $prefix.'|----- ');
+      }
     }
   }
 ?>

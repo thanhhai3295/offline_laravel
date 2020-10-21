@@ -1,28 +1,5 @@
 @php
-
-$traverse = function ($categories, $prefix = '') use (&$traverse) {
-    
-    foreach ($categories as $category) {
-        $name = PHP_EOL.$prefix.' '.$category->name;
-        $ordering = '<a href="#" class="ordering"><i class="fa fa-arrow-up"></i></a><a href="#" class="ordering"><i class="fa fa-arrow-down"></i></a><input class="text-center form-control" type="text" value="'.$category->ordering.'" style="width:10%;display:inline">';
-        $xhtml = '<tr>';
-        $xhtml .= '<td><input type="checkbox" class="form-check-input"></td>
-                  <td style="font-size:20px">'.$name.'</td>
-                  <td>'.$ordering.'</td>
-                  <td>'.$category->created.'</td>
-                  <td>'.$category->created_by.'</td>
-                  <td>'.$category->modified.'</td>
-                  <td>'.$category->modified_by.'</td>
-                  <td>'.$category->status.'</td>
-                  <td>'.$category->id.'</td>';
-        $xhtml .= '</tr>';
-        echo $xhtml;
-        $traverse($category->children, $prefix.'|----- ');
-    }
-};
-
-
-
+use App\Helpers\Template;
 @endphp
 
 <div class="table-responsive">
@@ -41,7 +18,7 @@ $traverse = function ($categories, $prefix = '') use (&$traverse) {
       </tr>
     </thead>
       <tbody>          
-          {{$traverse($items)}}
+          {{Template::showTree($controllerName,$items)}}
       </tbody>
   </table>
 </div>

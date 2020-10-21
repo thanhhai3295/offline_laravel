@@ -17,7 +17,7 @@ class NestedsetController extends Controller
       view()->share('controllerName',$this->controllerName);
     }
     public function index() {
-      $items = $this->model->get()->toTree();
+      $items = $this->model->defaultOrder()->get()->toTree();
       return view($this->pathViewController.'index',[
         'items' => $items
       ]);
@@ -35,5 +35,14 @@ class NestedsetController extends Controller
       return view($this->pathViewController.'form',[
         'arrParent' => $arrParent
       ]);
+    }
+    public function node(Request $request){
+      $node = $this->model->find($request->id);
+      if($request->node == 'up') {
+        $node->up();
+      } else {
+        $node->down();
+      }
+      return redirect()->route($this->controllerName)->with('success','Change Success!');
     }
 }
