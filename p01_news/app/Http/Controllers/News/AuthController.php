@@ -20,6 +20,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {   
+        $urlPrevious = url()->previous();
+        $urlBase = url()->to('/');
+
+        if(($urlPrevious != $urlBase . '/login') && (substr($urlPrevious, 0, strlen($urlBase)) === $urlBase)) {
+            session()->put('url.intended', $urlPrevious);
+        }
+    
         return view($this->pathViewController . 'login');
     }
 
@@ -32,7 +39,7 @@ class AuthController extends Controller
             if (!$userInfo)
                 return redirect()->route($this->controllerName . '/login')->with('news_notify', 'Tài khoản hoặc mật khẩu không chính xác!');
             $request->session()->put('userInfo', $userInfo);
-            return redirect(request()->url);
+            return redirect(session('url.intended'));
         }
     }
 
