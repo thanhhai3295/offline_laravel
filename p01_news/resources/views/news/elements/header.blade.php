@@ -1,10 +1,10 @@
 @php
-    use App\Models\CategoryModel as CategoryModel;
+    use App\Models\NestedsetModel as Nestedset;
     use App\Models\MenuModel as MenuModel;
     use App\Helpers\URL;
-    $categoryModel = new CategoryModel();
-    $itemsCategory = $categoryModel->listItems(null,['task' => 'menu-list-items']);
-
+    use App\Helpers\Template;
+    $nestedsetModel = new Nestedset();
+    $itemsNestedset = $nestedsetModel->defaultOrder()->get()->toTree()->toArray();
     $MenuModel = new MenuModel();
     $itemsMenu = $MenuModel->listItems(null,['task' => 'menu-list-items']);
 
@@ -18,13 +18,21 @@
             $classActive = '';
             $xhtmlMenu .= '<li '.$classActive.'><a href="'.$value['link'].'">'.$value['name'].'</a>';
             if($value['type'] == 'category') {
-                $xhtmlMenu .= '<ul>';
-                    foreach ($itemsCategory as $key02 => $value02) {
-                        $link = URL::linkCategory($value02['name'],$value02['id']);   
-                        $xhtmlMenu .= '<li><a href="'.$link.'">'.$value02['name'].'</a></li>';
-                        //$xhtmlMenuMobile .= '<li class="menu_mm"><a href="#">'.$value02['name'].'</a></li>';
-                    }
-                $xhtmlMenu .= '</ul>';
+                // $xhtmlMenu .= '<ul>';
+                //     foreach ($itemsNestedset as $key02 => $value02) {
+                //         $link = URL::linkCategory($value02['name'],$value02['id']);   
+                //         $xhtmlMenu .= '<li><a href="'.$link.'">'.$value02['name'].'</a>';
+                //             if($value02['children']) {
+                //                 foreach ($value02['children'] as $key03 => $value03) {
+                //                     $link = URL::linkCategory($value03['name'],$value03['id']);   
+                //                     $xhtmlMenu .= '<li><a href="'.$link.'">'.$value03['name'].'</a></li>';
+                //                 }
+                //             }
+                //         $xhtmlMenu .= '</li>';
+                //         //$xhtmlMenuMobile .= '<li class="menu_mm"><a href="#">'.$value02['name'].'</a></li>';
+                //     }
+                // $xhtmlMenu .= '</ul>';
+                $xhtmlMenu .= Template::recursiveMenu($itemsNestedset);
             }
             $xhtmlMenu .= '</li>';
         }

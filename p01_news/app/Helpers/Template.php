@@ -192,5 +192,18 @@
       }
       return $result;
     }
+    public static function recursiveMenu($items, &$xhtmlMenu = ''){
+      $xhtmlMenu .= '<ul>';
+      foreach ($items as $key => $value) {
+        $link = URL::linkCategory($value['name'],$value['id']);   
+        $xhtmlMenu .= '<li><a href="'.$link.'">'.$value['name'].'</a>';
+        if($value['children']) {
+          self::recursiveMenu($value['children'],$xhtmlMenu);
+        }
+        $xhtmlMenu .= '</li>';
+      }
+      $xhtmlMenu .= '</ul>';
+      return $xhtmlMenu;
+    }
   }
 ?>

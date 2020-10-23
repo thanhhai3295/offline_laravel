@@ -186,8 +186,11 @@ nav.main_nav ul.main_nav_list > li{
     text-align: center;
     
 }
+nav.main_nav li {
+    cursor: pointer;
+}
 nav.main_nav ul.main_nav_list li:hover{
-    background: indigo;
+    background: #ff5858;
     transition: all 300ms;
 }
 nav.main_nav ul.main_nav_list li:hover > a {
@@ -195,7 +198,7 @@ nav.main_nav ul.main_nav_list li:hover > a {
     transition: all 300ms;
 }
 nav.main_nav ul.main_nav_list li > ul {
-    background: indigo;
+    background: #ff5858;
     position: absolute;
     left: 0;
     top: 35px;
@@ -205,9 +208,10 @@ nav.main_nav ul.main_nav_list li > ul {
     animation: blink 1s;
 }
 nav.main_nav ul.main_nav_list li > ul li {
-    padding: 5px 10px;
+    padding: 10px;
     margin-right:0;
     min-width: 300px;
+    position: relative;
 }
 nav.main_nav ul.main_nav_list li > ul li a {
     color: #fff;
@@ -216,10 +220,19 @@ nav.main_nav ul.main_nav_list li > ul li:hover {
    background: #000;
    transition:all 300ms;
 }
-nav.main_nav ul.main_nav_list > li:hover ul {
+nav.main_nav ul.main_nav_list > li:hover > ul ,nav.main_nav ul.main_nav_list > li:hover > ul > li:hover > ul,nav.main_nav ul.main_nav_list > li:hover > ul > li:hover > ul >li:hover > ul,nav.main_nav ul.main_nav_list > li:hover > ul > li:hover > ul >li:hover > ul > li:hover > ul{
     display: block;
 }
-
+nav.main_nav ul.main_nav_list li > ul > li > ul {
+    background: #ff5858;
+    position: absolute;
+    left:125%;
+    top: 0;
+    display: none;
+}
+nav.main_nav ul.main_nav_list li > ul > li > ul > li {
+    position: relative;
+}
 @keyframes blink {
     0% {
         opacity: 0;
