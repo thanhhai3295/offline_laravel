@@ -33,4 +33,9 @@
       <p>{!!$content!!}</p>
     </div>  
   @endif
+  @if ($lengthContent == 'full')
+  <div class="post_text">
+    <p>{!!$content!!}</p>
+  </div>  
+  @endif
 </div>

@@ -31,7 +31,7 @@
                 @php unset($itemsFeature[0]) @endphp
                 @foreach ($itemsFeature as $item)
                     @include('news.partials.article.image',['item' => $item])
-                    @include('news.partials.article.content',['item' => $item,'lengthContent' => 0,'showCategory' => true])
+                    @include('news.partials.article.content',['item' => $item,'lengthContent' => -1,'showCategory' => true])
                 @endforeach    
                 </div>
             </div>
