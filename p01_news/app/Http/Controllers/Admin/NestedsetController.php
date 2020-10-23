@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\NestedsetModel as MainModel;
 use Illuminate\Http\Request;
+use Config;
 class NestedsetController extends Controller
 {
     private $model;
@@ -23,16 +24,30 @@ class NestedsetController extends Controller
       ]);
     }
     public function save(Request $request) {
-      $node = $this->model->create(['name' => $request->name]); 
+      if($request->id) {
+        $node = $this->model->find($request->id);
+        $node->delete();
+      }
+      $node = $this->model->create([
+        'name'   => $request->name,
+        'status' => 'active'
+        ]); 
       if($request->parent && $request->parent != 'default') {
         $parent = $this->model->find($request->parent);
-        $parent->appendNode($node);
+        //$parent->appendNode($node);
+        $node->appendToNode($parent)->save();
       }
-      return redirect()->route($this->controllerName.'/form')->with('success','Add Success!');
+      return redirect()->route($this->controllerName)->with('success','Add Success!');
     }
     public function form(Request $request) {
-      $arrParent = $this->model->getItem(null,['task' => 'get-item']);
+      $item = null;
+      if(!empty($request->id)) {
+        $params['id'] = $request->id;
+        $item = $this->model->getItem($params,['task' => 'get-item']);
+      }
+      $arrParent = $this->model->defaultOrder()->get()->toTree()->toArray();
       return view($this->pathViewController.'form',[
+        'item' => $item,
         'arrParent' => $arrParent
       ]);
     }
@@ -44,5 +59,22 @@ class NestedsetController extends Controller
         $node->down();
       }
       return redirect()->route($this->controllerName)->with('success','Change Success!');
+    }
+    public function status(Request $request){
+      $params['id'] = $request->id;
+      $params['status'] = $request->status;
+      $this->model->saveItems($params,['task' => 'change-status']);
+      $tmplStatus = Config::get('zvn.template.status');
+      $currentStatus = ($params['status'] == 'active') ? 'inactive' : 'active';
+      $data['name'] = $tmplStatus[$currentStatus]['name'];
+      $data['status'] = $currentStatus;
+      $data['class'] = $tmplStatus[$currentStatus]['class'];
+      $data['success'] = true;
+      echo \json_encode($data);
+    }
+    public function delete(Request $request) {
+      $node = $this->model->find($request->id);
+      $node->delete();
+      return redirect()->route($this->controllerName)->with('success','Delete Success!');
     }
 }

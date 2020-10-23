@@ -114,6 +114,7 @@
       Route::post('save',$controller.'save')->name($controllerName.'/save');
       Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
       Route::get('change-node-{node}/{id}',$controller.'node')->where('id','[0-9]+')->name($controllerName.'/node');
+      Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
     });
 
   });

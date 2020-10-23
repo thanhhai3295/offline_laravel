@@ -159,26 +159,38 @@
     public static function showTree($controllerName,$items,$prefix = ''){
       foreach ($items as $item) {
         $name = PHP_EOL.$prefix.' '.$item->name;
-        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
-        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $item['id']]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
-        $node = Nestedset::find($item->id);
+        $id = $item->id;
+        $listBtnAction   = Template::showButtonAction($controllerName,$id);
+        $status = Template::showItemStatus($controllerName,$id,$item['status']);
+        $arrowUp = '<a href="'.route($controllerName.'/node',['node' => 'up','id' => $id]).'" class="ordering"><i class="fa fa-arrow-up"></i></a>';
+        $arrowDown = '<a href="'.route($controllerName.'/node',['node' => 'down','id' => $id]).'" class="ordering"><i class="fa fa-arrow-down"></i></a>';
+        $node = Nestedset::find($id);
         if(!$node->getPrevSibling()) $arrowUp = '';
         if(!$node->getNextSibling()) $arrowDown = '';
-        $ordering = $arrowUp.$arrowDown.'<input class="text-center form-control" type="text" value="'.$item->ordering.'" style="width:10%;display:inline">';
+        $arrow = $arrowUp.$arrowDown;
         $xhtml = '<tr>';
-        $xhtml .= '<td><input type="checkbox" class="form-check-input"></td>
+        $xhtml .= '<td>'.$id.'</td>
                   <td style="font-size:20px">'.$name.'</td>
-                  <td>'.$ordering.'</td>
+                  <td>'.$arrow.'</td>
                   <td>'.$item->created.'</td>
-                  <td>'.$item->created_by.'</td>
-                  <td>'.$item->modified.'</td>
-                  <td>'.$item->modified_by.'</td>
-                  <td>NULL</td>
-                  <td>'.$item->id.'</td>';
+                  <td>'.$item->modified.'</td>               
+                  <td>'.$status.'</td>
+                  <td>'.$listBtnAction.'</td>';
+                  
         $xhtml .= '</tr>';
         echo $xhtml;
           self::showTree($controllerName,$item->children, $prefix.'|----- ');
       }
+    }
+    public static function arrParentTree($arrParent,&$result = null,$prefix = '') {
+      $result['default'] = 'No Parent';
+      foreach ($arrParent as $key => $value) {
+        $result[$value['id']] = $prefix.$value['name'];
+        if($value['children']) {
+          self::arrParentTree($value['children'],$result,$prefix.'|----- ');
+        }
+      }
+      return $result;
     }
   }
 ?>

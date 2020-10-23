@@ -4,20 +4,23 @@
   use App\Helpers\Form as FormTemplate; 
   $formInputAttr = config('zvn.template.form_input');
   $formLabelAttr = config('zvn.template.form_label');
+  $inputHiddenID = Form::hidden('id', $item['id']);
+  $arrParent = Template::arrParentTree($arrParent);
+
   $elements = [
     [
       'label' => Form::label('name', 'Name',$formLabelAttr),
-      'element' => Form::text('name', '',$formInputAttr),
+      'element' => Form::text('name', $item['name'],$formInputAttr),
       'error' => 'name'
     ],
     [
-      'label' => Form::label('parent', 'Status',$formLabelAttr),
-      'element' => Form::select('parent', $arrParent, '',$formInputAttr),
-      'error' => 'status'
+      'label' => Form::label('parent', 'Parent',$formLabelAttr),
+      'element' => Form::select('parent', $arrParent, $item['parent_id'],$formInputAttr),
+      'error' => 'parent'
     ],
     [
       'type' => 'btn-submit',
-      'element' => Form::submit('Save',['class' => 'btn btn-success'])
+      'element' => $inputHiddenID.Form::submit('Save',['class' => 'btn btn-success'])
     ]
   ];
 @endphp

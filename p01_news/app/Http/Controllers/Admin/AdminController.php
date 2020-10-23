@@ -41,7 +41,6 @@ class AdminController extends Controller
       if(!empty($request->id)) {
         $params['id'] = $request->id;
         $item = $this->model->getItem($params,['task' => 'get-item']);
-        
       }
       $categoryModel = new CategoryModel();
       $itemCategory = $categoryModel->listItems(null,['task' => 'news-list-items-in-selectbox']);
@@ -60,9 +59,7 @@ class AdminController extends Controller
       $params['id'] = $request->id;
       $params['status'] = $request->status;
       $this->model->saveItems($params,['task' => 'change-status']);
-
       $tmplStatus = Config::get('zvn.template.status');
-      
       $currentStatus = ($params['status'] == 'active') ? 'inactive' : 'active';
       $data['name'] = $tmplStatus[$currentStatus]['name'];
       $data['status'] = $currentStatus;

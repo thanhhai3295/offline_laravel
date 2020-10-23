@@ -95,7 +95,8 @@
         'user'  => ['edit'],
         'menu'  => ['edit','delete',],
         'rss'  => ['edit','delete',],
-        'contact'  => ['delete']
+        'contact'  => ['delete'],
+        'nestedset' => ['edit','delete']
       ]
     ]
   ];
