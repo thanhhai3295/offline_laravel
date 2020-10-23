@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\ArticleModel;
+use App\Models\NestedsetModel;
 class ArticleController extends Controller
 {
     private $controllerName     = 'article';
@@ -23,6 +24,11 @@ class ArticleController extends Controller
       if(!($itemsArticle)) return redirect()->route('home');
       $itemsLastest = $articleModel->listItems(null,['task' => 'news-list-items-lastest']);
       $params['category_id'] = $itemsArticle['category_id'];
+
+      $arrBreadcrumb = NestedsetModel::defaultOrder()->ancestorsOf($params['category_id'])->toArray();
+      $arrBreadcrumb[] = NestedsetModel::find($params['category_id'])->toArray();
+      $itemsArticle['breadcrumb'] = $arrBreadcrumb;
+      
       $itemsArticle['related_articles'] = $articleModel->listItems($params,['task' => 'news-list-items-related-in-category']);
       return view($this->pathViewController.'index',[
         'params' => $this->params,

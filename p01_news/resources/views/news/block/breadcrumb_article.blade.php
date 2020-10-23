@@ -13,8 +13,16 @@
                       <div class="breadcrumbs">
                           <ul class="d-flex flex-row align-items-start justify-content-start">
                             <li><a href="{{route('home')}}">Trang chủ</a></li>
-                            <li><a href="{{$linkCategory}}">{{$item['category_name']}}</a></li>
-                              <li>{{$item['name']}}</li>
+                            {{-- <li><a href="{{$linkCategory}}">{{$item['category_name']}}</a></li>
+                              <li>{{$item['name']}}</li> --}}
+                            @foreach ($item['breadcrumb'] as $key => $value)
+                            @if ($key === array_key_last($item['breadcrumb']))
+                                <li>{{$value['name']}}</li>
+                            @else
+                                <li><a href="#">{{$value['name']}}</a></li>
+                            @endif
+                            
+                            @endforeach
                           </ul>
                       </div>
                   </div>
