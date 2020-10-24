@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2020 at 11:58 AM
+-- Generation Time: Oct 24, 2020 at 11:50 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -66,7 +66,7 @@ INSERT INTO `article` (`id`, `category_id`, `name`, `content`, `status`, `thumb`
 (19, 7, 'BMW i8 Roadster - xe mui trần dẫn đường ở Formula E', '<p>Dịp cuối tuần qua, BMW giới thiệu chiếc xe dẫn đường, l&agrave;m nhiệm vụ đảm bảo an to&agrave;n tại giải đua xe Formula E. Giải đua tương tự giải F1, nhưng to&agrave;n bộ xe đua sử dụng động cơ điện.</p>\r\n\r\n<p>i8 Roadster Safety Car dựa tr&ecirc;n chiếc i8 Roadster ti&ecirc;u chuẩn, nhưng c&oacute; những thay đổi để trở th&agrave;nh chiếc xe dẫn đường chuy&ecirc;n dụng. Ngoại h&igrave;nh c&oacute; một số đặc điểm ấn tượng hơn so với nguy&ecirc;n bản. K&iacute;nh chắn gi&oacute; kiểu d&agrave;nh cho xe đua, trọng t&acirc;m hạ thấp 15 mm.</p>', 'active', '9fbeUKTBpU.png', '2019-05-15 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-10', 'normal'),
 (20, 3, 'Tia cực tím tại Hà Nội ở mức \'nguy hiểm\'', '<p>Chỉ số tia UV tại H&agrave; Nội ng&agrave;y 18-19/5 l&ecirc;n tới 11, mức được đ&aacute;nh gi&aacute; l&agrave; &quot;nguy hiểm&quot; dễ khiến da, mắt bị bỏng nhiệt.</p>\r\n\r\n<p>H&agrave; Nội đang trải qua đợt nắng n&oacute;ng gay gắt. Theo Trung t&acirc;m Dự b&aacute;o Kh&iacute; tượng Thủy văn Quốc gia, nhiệt độ cao nhất ở H&agrave; Nội ng&agrave;y 18/5 dao động trong khoảng 37 đến 39 độ C, c&oacute; nơi tr&ecirc;n 39 độ.&nbsp;Trang&nbsp;<em>World Weather Online</em>&nbsp;của Anh dự b&aacute;o chỉ số tia cực t&iacute;m tại H&agrave; Nội hai ng&agrave;y 18-19/5 đạt mức 11.&nbsp;</p>', 'active', 'C4DtP4ico8.png', '2019-05-17 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-16', 'normal'),
 (21, 2, 'Blockchain và trí tuệ nhân tạo AI làm thay đổi giáo dục trực tuyến', '<p>Blockchain khiến dữ liệu trở n&ecirc;n c&ocirc;ng khai, minh bạch với người học, AI gi&uacute;p cải thiện khả năng tương t&aacute;c v&agrave; giảng dạy với từng c&aacute; nh&acirc;n.</p>\r\n\r\n<p>Sự b&ugrave;ng nổ của Internet v&agrave; những c&ocirc;ng nghệ mới như chuỗi khối (Blockchain) v&agrave; tr&iacute; tuệ nh&acirc;n tạo (AI) đ&atilde; g&oacute;p phần l&agrave;m thay đổi nền gi&aacute;o dục tr&ecirc;n to&agrave;n thế giới, h&igrave;nh th&agrave;nh những nền tảng Online Learning với nhiều ưu thế.</p>\r\n\r\n<p><strong>Mobile Learning dự b&aacute;o l&agrave; &quot;Cuộc c&aacute;ch mạng tiếp theo&quot; của gi&aacute;o dục trực tuyến</strong></p>\r\n\r\n<p>Theo nghi&ecirc;n cứu của Global Market Insights, thị trường gi&aacute;o dục trực tuyến to&agrave;n cầu đang c&oacute; tốc độ ph&aacute;t triển nhanh chưa từng thấy khi nền tảng hạ tầng Internet ng&agrave;y c&agrave;ng ho&agrave;n thiện v&agrave; phủ s&oacute;ng rộng khắp. Gi&aacute; trị c&aacute;c start-up về EdTech (C&ocirc;ng ty c&ocirc;ng nghệ chuy&ecirc;n về gi&aacute;o dục) to&agrave;n cầu được ước t&iacute;nh hơn 190 tỷ USD v&agrave;o năm 2018 v&agrave; dự kiến vượt hơn 300 tỷ USD v&agrave;o năm 2025.</p>', 'active', 'gCPGos7mhY.png', '2019-05-17 00:00:00', 'hailan', '2019-05-17 00:00:00', 'hailan', '2019-05-16', 'feature'),
-(22, 6, 'Huawei nói lệnh cấm sẽ khiến Mỹ tụt hậu về 5G', '<p>Huawei khẳng định sắc lệnh mới của Mỹ sẽ chỉ c&agrave;ng khiến qu&aacute; tr&igrave;nh triển khai c&ocirc;ng nghệ 5G ở nước n&agrave;y th&ecirc;m chậm chạp v&agrave; đắt đỏ.</p>\r\n\r\n<p>H&atilde;ng c&ocirc;ng nghệ Trung Quốc tự nhận l&agrave; &quot;người dẫn đầu kh&ocirc;ng ai s&aacute;nh kịp về c&ocirc;ng nghệ 5G&quot;, n&ecirc;n việc bị hạn chế kinh doanh ở Mỹ chỉ dẫn đến kết cục l&agrave; Mỹ sẽ bị &quot;tụt lại ph&iacute;a sau&quot; trong việc triển khai c&ocirc;ng nghệ kết nối di động thế hệ mới</p>', 'active', 'nt1QxhKUXM.jpeg', '2019-05-17 00:00:00', 'hailan', NULL, NULL, '2019-05-16', 'feature'),
+(22, 8, 'Huawei nói lệnh cấm sẽ khiến Mỹ tụt hậu về 5G', '<p>Huawei khẳng định sắc lệnh mới của Mỹ sẽ chỉ c&agrave;ng khiến qu&aacute; tr&igrave;nh triển khai c&ocirc;ng nghệ 5G ở nước n&agrave;y th&ecirc;m chậm chạp v&agrave; đắt đỏ.</p>\r\n\r\n<p>H&atilde;ng c&ocirc;ng nghệ Trung Quốc tự nhận l&agrave; &quot;người dẫn đầu kh&ocirc;ng ai s&aacute;nh kịp về c&ocirc;ng nghệ 5G&quot;, n&ecirc;n việc bị hạn chế kinh doanh ở Mỹ chỉ dẫn đến kết cục l&agrave; Mỹ sẽ bị &quot;tụt lại ph&iacute;a sau&quot; trong việc triển khai c&ocirc;ng nghệ kết nối di động thế hệ mới</p>', 'active', 'nt1QxhKUXM.jpeg', '2019-05-17 00:00:00', 'hailan', '2020-10-24 00:00:00', 'HaiDepTrai', '2019-05-16', 'feature'),
 (23, 6, 'Asus ra mắt Zenfone 6 với camera lật tự động', '<p>Với thiết kế m&agrave;n h&igrave;nh tr&agrave;n viền ho&agrave;n to&agrave;n kh&ocirc;ng tai thỏ, camera ch&iacute;nh 48 megapixel tr&ecirc;n Zenfone 6 c&oacute; thể lật từ sau ra trước biến th&agrave;nh camera selfie.</p>\r\n\r\n<p>Zenfone 6 l&agrave; một trong những smartphone c&oacute; viền m&agrave;n h&igrave;nh mỏng nhất tr&ecirc;n thị trường với tỷ lệ m&agrave;n h&igrave;nh hiển thị chiếm tới 92% diện t&iacute;ch mặt trước. M&aacute;y c&oacute; m&agrave;n h&igrave;nh 6,4 inch tr&agrave;n viền ra cả bốn cạnh, kh&ocirc;ng tai thỏ như một số mẫu Zenfone trước v&agrave; cũng kh&ocirc;ng d&ugrave;ng thiết kế đục lỗ như Galaxy S10, S10+</p>', 'active', 'aiC6j6fWZY.png', '2019-05-17 00:00:00', 'hailan', '2020-09-25 00:00:00', 'HaiDepTrai', '2019-05-16', 'normal');
 
 -- --------------------------------------------------------
@@ -211,21 +211,25 @@ CREATE TABLE `nestedset` (
   `created` datetime DEFAULT NULL,
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
-  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `nestedset`
 --
 
-INSERT INTO `nestedset` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `level`, `ordering`, `created`, `created_by`, `modified`, `modified_by`) VALUES
-(1, 'aaa', 1, 2, NULL, NULL, 1, '2020-10-20 09:16:35', 'HaiDepTrai', '2020-10-21 09:14:43', NULL),
-(2, 'bbb', 3, 10, NULL, NULL, NULL, '2020-10-20 09:18:46', NULL, '2020-10-20 09:18:46', NULL),
-(3, 'test test', 4, 9, 2, NULL, NULL, '2020-10-20 11:15:43', NULL, '2020-10-20 11:15:43', NULL),
-(4, 'test test test', 5, 8, 3, NULL, NULL, '2020-10-20 11:17:43', NULL, '2020-10-20 11:17:43', NULL),
-(5, 'test test test test', 6, 7, 4, NULL, NULL, '2020-10-20 11:18:31', NULL, '2020-10-20 11:18:31', NULL),
-(6, 'groot', 11, 14, NULL, NULL, NULL, '2020-10-20 12:05:02', NULL, '2020-10-20 12:05:02', NULL),
-(7, 'i am groot', 12, 13, 6, NULL, NULL, '2020-10-21 09:09:50', NULL, '2020-10-21 09:09:50', NULL);
+INSERT INTO `nestedset` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `level`, `ordering`, `created`, `created_by`, `modified`, `modified_by`, `status`) VALUES
+(1, 'aaa', 1, 6, NULL, NULL, 1, '2020-10-20 09:16:35', 'HaiDepTrai', '2020-10-23 15:09:08', NULL, 'active'),
+(2, 'bbb', 7, 14, NULL, NULL, NULL, '2020-10-20 09:18:46', NULL, '2020-10-23 12:11:43', NULL, 'active'),
+(3, 'test test', 8, 13, 2, NULL, NULL, '2020-10-20 11:15:43', NULL, '2020-10-20 11:15:43', NULL, 'active'),
+(4, 'test test test', 9, 12, 3, NULL, NULL, '2020-10-20 11:17:43', NULL, '2020-10-20 11:17:43', NULL, 'active'),
+(5, 'test test test test', 10, 11, 4, NULL, NULL, '2020-10-20 11:18:31', NULL, '2020-10-20 11:18:31', NULL, 'active'),
+(6, 'groot', 15, 18, NULL, NULL, NULL, '2020-10-20 12:05:02', NULL, '2020-10-20 12:05:02', NULL, 'active'),
+(7, 'i am groot', 16, 17, 6, NULL, NULL, '2020-10-21 09:09:50', NULL, '2020-10-21 09:09:50', NULL, 'active'),
+(8, 'aaaaa', 2, 3, 1, NULL, NULL, '2020-10-22 13:14:25', NULL, '2020-10-23 16:55:21', NULL, 'inactive'),
+(10, 'bbbbb', 19, 20, NULL, NULL, NULL, '2020-10-23 12:43:35', NULL, '2020-10-23 12:43:35', NULL, 'active'),
+(13, 'aaaaa', 4, 5, 1, NULL, NULL, '2020-10-23 16:07:37', NULL, '2020-10-23 16:07:38', NULL, 'active');
 
 -- --------------------------------------------------------
 
@@ -433,7 +437,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `nestedset`
 --
 ALTER TABLE `nestedset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rss`
