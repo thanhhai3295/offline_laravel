@@ -182,12 +182,12 @@
           self::showTree($controllerName,$item->children, $prefix.'|----- ');
       }
     }
-    public static function arrParentTree($arrParent,&$result = null,$prefix = '') {
-      $result['default'] = 'No Parent';
+    public static function arrParentTree($arrParent,$defaultValue = true,&$result = null,$prefix = '') {
+      if($defaultValue) $result['default'] = 'No Parent';
       foreach ($arrParent as $key => $value) {
         $result[$value['id']] = $prefix.$value['name'];
         if($value['children']) {
-          self::arrParentTree($value['children'],$result,$prefix.'|----- ');
+          self::arrParentTree($value['children'],$defaultValue,$result,$prefix.'|----- ');
         }
       }
       return $result;

@@ -7,6 +7,7 @@
   $formCkeditorAttr = config('zvn.template.form_ckeditor');
   $inputHiddenID = Form::hidden('id', $item['id']);
   $inputHiddenThumb = Form::hidden('thumb_current', $item['thumb']);
+  $arrParent = Template::arrParentTree($arrParent,false);
   $statusValue = [
     'default'  => config('zvn.template.status.default.name'),
     'active'   => config('zvn.template.status.active.name'),
@@ -30,7 +31,7 @@
     ],
     [
       'label' => Form::label('category_id', 'Category',$formLabelAttr),
-      'element' => Form::select('category_id', $itemCategory, $item['category_id'],$formInputAttr),
+      'element' => Form::select('category_id', $arrParent, $item['category_id'],$formInputAttr),
       'error' => 'status'
     ],
     [
