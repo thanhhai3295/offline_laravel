@@ -96,7 +96,8 @@
         'menu'  => ['edit','delete',],
         'rss'  => ['edit','delete',],
         'contact'  => ['delete'],
-        'nestedset' => ['edit','delete']
+        'nestedset' => ['edit','delete'],
+        'categoryproduct' => ['edit','delete']
       ]
     ]
   ];
