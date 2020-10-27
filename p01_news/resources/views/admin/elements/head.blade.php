@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="img/favicon.ico" type="image/ico"/>
 <title>Admin | Index</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Bootstrap -->
 <link href="{{asset('assmin/asset/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
 <!-- Font Awesome -->
@@ -19,4 +20,7 @@
 <link href="{{asset('assmin/css/custom.min.css')}}" rel="stylesheet">
 <!-- Custom Theme Style -->
 <link href="{{asset('assmin/css/toastr.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+<link href="{{asset('assmin/css/jquery.tagit.css')}}" rel="stylesheet">
+<link href="{{asset('assmin/css/dropzone.css')}}" rel="stylesheet">
 <link href="{{asset('assmin/css/mycss.css')}}" rel="stylesheet">

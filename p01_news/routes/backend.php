@@ -129,7 +129,7 @@
       Route::get('change-node-{node}/{id}',$controller.'node')->where('id','[0-9]+')->name($controllerName.'/node');
       Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
     });
-    // --------------- Product ---------------
+    // --------------- PRODUCT ---------------
     $prefix = 'product';
     $controllerName = 'product';
     Route::group(['prefix' => $prefix], function () use($prefix,$controllerName) {
@@ -140,6 +140,7 @@
       Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
       Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
       Route::get('change-type-{type}/{id}',$controller.'type')->where('id','[0-9]+')->name($controllerName.'/type');
+      Route::post('upload',$controller.'upload')->name($controllerName.'/upload');
     });
 
   });

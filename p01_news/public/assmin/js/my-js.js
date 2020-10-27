@@ -211,9 +211,44 @@ $(document).ready(function() {
 			localStorage.setItem('setting',setting);
 		});
 	});
+
 	//Init datepicker
 	// $('.datepicker').datepicker({
 	// 	format: 'dd-mm-yyyy',
 	// });
 
+	//TAG-IT
+	$('#allowSpacesTags').tagit({
+		availableTags: 'php',
+		allowSpaces: true,
+		fieldName: "tags[]"
+	});
+	//DROPZONE
+	
+	Dropzone.options.singleFileUpload = {
+    init: function() {
+      var myDropzone = this;
+      myDropzone.on("addedfile", function(file) { 
+        file.previewElement.addEventListener("click", function() {
+          myDropzone.removeFile(file);
+          var id = file.name.replace('.','-');
+          document.getElementById(id).remove();
+        });
+      });
+		},
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
+    success: function(file,response) {
+      var mainForm = document.getElementById('main-form');
+      var input = document.createElement("input");
+      response = JSON.parse(response);
+      input.setAttribute('type','hidden');
+      input.setAttribute('name','thumb[]');
+      input.setAttribute('id',response['name'].replace('.','-'));
+      input.setAttribute('value',JSON.stringify(response['file']));
+      mainForm.appendChild(input);
+    },
+	};
+	
 });

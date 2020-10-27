@@ -25,6 +25,7 @@
             <li><a href="{{ route('setting') }}"><i class="fa fa-cog"></i> Setting</a></li>
             <li><a href="{{ route('nestedset') }}"><i class="fa fa-sliders"></i> NestedSet</a></li>
             <li><a href="{{ route('categoryproduct') }}"><i class="fa fa-cogs"></i> Cat-Product</a></li>
+            <li><a href="{{ route('product') }}"><i class="fa fa-product-hunt"></i> Product</a></li>
         </ul>
     </div>
 </div>
