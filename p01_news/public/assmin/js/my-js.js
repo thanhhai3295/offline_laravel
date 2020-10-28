@@ -226,28 +226,27 @@ $(document).ready(function() {
 	//DROPZONE
 	
 	Dropzone.options.singleFileUpload = {
+		acceptedFiles: ".jpeg,.jpg,.png,.gif",
+		autoProcessQueue: false,
+		paramName: "file",
+		url: $('#singleFileUpload').data('url'),
     init: function() {
       var myDropzone = this;
-      myDropzone.on("addedfile", function(file) { 
-        file.previewElement.addEventListener("click", function() {
-          myDropzone.removeFile(file);
-          var id = file.name.replace('.','-');
-          document.getElementById(id).remove();
-        });
-      });
+      // myDropzone.on("addedfile", function(file) { 
+      //   file.previewElement.addEventListener("click", function() {
+
+      //   });
+			// });
+			$("#main-form").submit(function (e) {
+				myDropzone.processQueue();
+			}); 
 		},
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
     success: function(file,response) {
-      var mainForm = document.getElementById('main-form');
-      var input = document.createElement("input");
-      response = JSON.parse(response);
-      input.setAttribute('type','hidden');
-      input.setAttribute('name','thumb[]');
-      input.setAttribute('id',response['name'].replace('.','-'));
-      input.setAttribute('value',JSON.stringify(response['file']));
-      mainForm.appendChild(input);
+			var input = '<input type="hidden" name="thumb[]" value='+response.name+'>';
+			$('#main-form').append(input);
     },
 	};
 	

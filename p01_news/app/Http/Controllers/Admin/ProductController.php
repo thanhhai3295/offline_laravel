@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\ProductModel as MainModel;
 use App\Models\CategoryproductModel;
@@ -16,9 +17,12 @@ class ProductController extends AdminController
       parent::__construct();
       $this->model = new MainModel();
     }
-    public function save(Request $request) {
+    public function save(MainRequest $request) {
       if($request->method() == 'POST') {
         $params = $request->all();
+        echo '<pre>';
+        print_r($params);
+        echo '</pre>';die();
         $task = 'add-item';
         $notify = 'Add Item Success!';
         if($params['id'] != NULL) {
@@ -44,8 +48,9 @@ class ProductController extends AdminController
       ]);
     }
     public function upload(Request $request) {
-      $data['name'] = $_FILES['file']['name'];
-      $data['file'] = $_FILES['file'];
-      echo json_encode($data);
-    }
+      $thumbObj = $request->file('file');
+      $thumbName = Str::random(10).'.'.$thumbObj->clientExtension();
+      $thumbObj->storeAs($this->controllerName,$thumbName,'zvn_store_images');
+      return response()->json(['name' => $thumbName]);
+    } 
 }

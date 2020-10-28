@@ -38,37 +38,37 @@
       'label' => Form::label('category_id', 'Category',$formLabelAttr),
       'element' => Form::select('category_id', $arrParent, $item['category_id'],$formInputAttr),
       'error' => 'status'
-    ],
-    [
-      'type' => 'btn-submit',
-      'element' => $inputHiddenID.Form::submit('Save',['class' => 'btn btn-success'])
     ]
+
   ];
 @endphp
 @section('content')
 @include('admin.templates.page_header',['pageIndex' => false])
 
 
-
+{!! Form::open([
+  'method' => 'POST',
+  'url' => route("$controllerName/save"),
+  'accept-charset' => 'UTF-8',
+  'enctype' => 'multipart/form-data',
+  'class' => 'form-horizontal form-label-left',
+  'id' => 'main-form'
+]) !!}
 <div class="col-md-6 col-sm-6 col-xs-6">
   <div class="x_panel">
     @include('admin.templates.x_title',['title' => 'Form'])
     <div class="x_content">
-      {!! Form::open([
-        'method' => 'POST',
-        'url' => route("$controllerName/save"),
-        'accept-charset' => 'UTF-8',
-        'enctype' => 'multipart/form-data',
-        'class' => 'form-horizontal form-label-left',
-        'id' => 'main-form'
-      ]) !!}
       {!! FormTemplate::show($elements,$errors) !!}
-      {!! Form::close() !!}
     </div>
   </div>
-@include('admin.pages.product.dropzone')
+  @include('admin.pages.product.dropzone')
+  {!! $inputHiddenID.Form::submit('Save',['class' => 'btn btn-success','id'=>'product_submit']); !!}
 </div> 
-@include('admin.pages.product.description')
-@include('admin.pages.product.attribute')
+<div class="col-md-6 col-sm-6 col-xs-6">
+  @include('admin.pages.product.description')
+  @include('admin.pages.product.attribute')
+</div>
 
+
+{!! Form::close() !!}
 @endsection  

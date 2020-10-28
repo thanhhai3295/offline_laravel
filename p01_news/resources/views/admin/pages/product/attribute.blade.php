@@ -1,4 +1,3 @@
-<div class="col-md-6 col-sm-6 col-xs-6">
   <div class="x_panel">
     @include('admin.templates.x_title',['title' => 'Attribute'])
     <div class="x_content">
@@ -16,5 +15,4 @@
 
     </div>
   </div>
-</div> 
 
