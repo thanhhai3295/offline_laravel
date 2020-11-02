@@ -3,8 +3,6 @@
     use App\Helpers\Template as Template; 
     $xhtmlButtonFilter = Template::showButtonFilter($controllerName,$countByStatus,$params['filter']['status'],$params['search']);
     $xhtmlAreaSearch   = Template::showAreaSearch($controllerName,$params['search']);
-    $xhtmlButtonGroup  = '<a href="'.route($controllerName.'/attribute').'" class="btn btn-success"><i class="fa fa-plus-circle"></i> Attribute </a>';
-    $xhtmlButtonAttribute  = '<a href="'.route($controllerName.'/groupAttribute').'" class="btn btn-success"><i class="fa fa-plus-circle"></i> Group Attr</a>';
 @endphp
 @section('content')
 
@@ -15,11 +13,7 @@
             @include('admin.templates.x_title',['title' => 'Bộ lọc'])
             <div class="x_content">
                 <div class="row">
-                    <div class="col-md-7"> 
-                        {!!$xhtmlButtonFilter!!} 
-                        {!!$xhtmlButtonGroup!!}
-                        {!!$xhtmlButtonAttribute!!}
-                    </div>                   
+                    <div class="col-md-7"> {!!$xhtmlButtonFilter!!} </div>                   
                     <div class="col-md-5"> {!!$xhtmlAreaSearch!!} </div>
                 </div>
             </div>
@@ -32,7 +26,7 @@
         <div class="x_panel">
             @include('admin.templates.x_title',['title' => 'Danh Sách'])
             <div class="x_content">
-                @include('admin.pages.product.list')
+                @include('admin.pages.attribute.list')
             </div>
         </div>
     </div>

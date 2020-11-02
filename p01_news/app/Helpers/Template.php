@@ -3,6 +3,7 @@
   use Config;
   use Route;
   use App\Models\NestedsetModel as NestedSet;
+  use App\Models\GroupattrModel as GroupAttr;
   class Template {
     public static function showButtonFilter($controllerName,$countByStatus,$currentFilterStatus,$paramsSearch){
       $xhtml = null;
@@ -206,6 +207,12 @@
       }
       $xhtmlMenu .= '</ul>';
       return $xhtmlMenu;
+    }
+    public static function showAttrGroup($string) {
+      $params['id'] = json_decode($string);
+      $groupAttr = new GroupAttr();
+      $result = $groupAttr->getItem($params,['task' => 'get-name']);
+      return implode('<br>',$result) ;
     }
   }
 ?>

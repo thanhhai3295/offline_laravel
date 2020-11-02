@@ -26,6 +26,8 @@
             <li><a href="{{ route('nestedset') }}"><i class="fa fa-sliders"></i> NestedSet</a></li>
             <li><a href="{{ route('categoryproduct') }}"><i class="fa fa-cogs"></i> Cat-Product</a></li>
             <li><a href="{{ route('product') }}"><i class="fa fa-product-hunt"></i> Product</a></li>
+            <li><a href="{{ route('attribute') }}"><i class="fa fa-sitemap"></i> Attribute</a></li>
+            <li><a href="{{ route('groupattr') }}"><i class="fa fa-object-group"></i> Group Attr</a></li>
         </ul>
     </div>
 </div>

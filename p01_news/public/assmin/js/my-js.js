@@ -227,16 +227,18 @@ $(document).ready(function() {
 	
 	Dropzone.options.singleFileUpload = {
 		acceptedFiles: ".jpeg,.jpg,.png,.gif",
-		autoProcessQueue: false,
+		autoProcessQueue: true,
 		paramName: "file",
 		url: $('#singleFileUpload').data('url'),
     init: function() {
       var myDropzone = this;
-      // myDropzone.on("addedfile", function(file) { 
-      //   file.previewElement.addEventListener("click", function() {
-
-      //   });
-			// });
+      myDropzone.on("addedfile", function(file) { 
+        file.previewElement.addEventListener("click", function() {
+					myDropzone.removeFile(file);
+					var id = file.name.replace('.','-');
+          document.getElementById(id).remove();
+        });
+			});
 			$("#main-form").submit(function (e) {
 				myDropzone.processQueue();
 			}); 
@@ -245,7 +247,8 @@ $(document).ready(function() {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
     success: function(file,response) {
-			var input = '<input type="hidden" name="thumb[]" value='+response.name+'>';
+			var id = file.name.replace('.','-');
+			var input = '<input type="hidden" name="thumb[]" value='+response.name+' id='+id+'>';
 			$('#main-form').append(input);
     },
 	};

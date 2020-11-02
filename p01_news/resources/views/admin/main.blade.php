@@ -3,7 +3,7 @@
 <head>
     @include('admin.elements.head')
 </head>
-<body class="nav-sm">
+<body class="nav-md">
     {{-- nav-md --}}
 <div class="container body">
     <div class="main_container">

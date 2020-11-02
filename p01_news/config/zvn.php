@@ -87,6 +87,8 @@
         'rss'  => ['all','name','link'],
         'contact'  => ['all','name','email'],
         'product'  => ['all','name','description'],
+        'groupattr'  => ['all','name'],
+        'attribute'  => ['all','name'],
       ],
       'button' => [
         'default' => ['edit','delete'],
@@ -99,7 +101,9 @@
         'contact'  => ['delete'],
         'nestedset' => ['edit','delete'],
         'categoryproduct' => ['edit','delete'],
-        'product' => ['edit','delete']
+        'product' => ['edit','delete'],
+        'attribute' => ['edit','delete'],
+        'groupattr' => ['edit','delete']
       ]
     ]
   ];

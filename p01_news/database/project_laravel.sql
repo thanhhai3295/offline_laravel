@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 11:50 AM
+-- Generation Time: Oct 28, 2020 at 11:07 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -100,6 +100,34 @@ INSERT INTO `category` (`id`, `name`, `status`, `created`, `created_by`, `modifi
 (6, 'Số hóa', 'active', '2019-05-04 00:00:00', 'admin', '2019-05-15 15:04:38', 'hailan', 0, 'grid'),
 (7, 'Xe - Ô tô', 'active', '2019-05-04 00:00:00', 'admin', '2019-05-15 15:04:36', 'hailan', 1, 'list'),
 (8, 'Kinh doanh', 'active', '2019-05-12 00:00:00', 'hailan', '2020-10-03 00:00:00', 'HaiDepTrai', 1, 'list');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_product`
+--
+
+CREATE TABLE `category_product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `_lft` int(11) NOT NULL,
+  `_rgt` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category_product`
+--
+
+INSERT INTO `category_product` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `created`, `created_by`, `modified`, `modified_by`, `status`) VALUES
+(1, 'Tranh A', 1, 2, NULL, '2020-10-27 11:22:32', NULL, '2020-10-27 11:22:32', NULL, 'active'),
+(2, 'Tranh B', 3, 4, NULL, '2020-10-27 11:22:58', NULL, '2020-10-27 11:22:58', NULL, 'active'),
+(3, 'Tranh C', 5, 6, NULL, '2020-10-27 11:23:09', NULL, '2020-10-27 11:23:09', NULL, 'active');
 
 -- --------------------------------------------------------
 
@@ -234,6 +262,28 @@ INSERT INTO `nestedset` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `level`, `or
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attribute` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumb` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ordering` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categoryproduct_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rss`
 --
 
@@ -364,6 +414,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
+-- Indexes for table `category_product`
+--
+ALTER TABLE `category_product`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
@@ -379,6 +435,12 @@ ALTER TABLE `menu`
 -- Indexes for table `nestedset`
 --
 ALTER TABLE `nestedset`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -422,6 +484,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `category_product`
+--
+ALTER TABLE `category_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
@@ -438,6 +506,12 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `nestedset`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rss`

@@ -53,4 +53,10 @@ class ProductController extends AdminController
       $thumbObj->storeAs($this->controllerName,$thumbName,'zvn_store_images');
       return response()->json(['name' => $thumbName]);
     } 
+    public function attribute(Request $request) {
+      return view($this->pathViewController.'attribute',[]);
+    }
+    public function groupAttribute(Request $request) {
+      return view($this->pathViewController.'group-attribute',[]);
+    }
 }

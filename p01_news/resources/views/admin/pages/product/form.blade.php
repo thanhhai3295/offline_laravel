@@ -61,12 +61,12 @@
       {!! FormTemplate::show($elements,$errors) !!}
     </div>
   </div>
-  @include('admin.pages.product.dropzone')
+  @include('admin.pages.product.form.dropzone')
   {!! $inputHiddenID.Form::submit('Save',['class' => 'btn btn-success','id'=>'product_submit']); !!}
 </div> 
 <div class="col-md-6 col-sm-6 col-xs-6">
-  @include('admin.pages.product.description')
-  @include('admin.pages.product.attribute')
+  @include('admin.pages.product.form.description')
+  @include('admin.pages.product.form.attribute')
 </div>
 
 
