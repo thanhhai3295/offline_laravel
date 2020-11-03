@@ -197,7 +197,7 @@
       $xhtmlMenu .= '<ul>';
       foreach ($items as $key => $value) {
         if($value['status'] == 'active') {
-          $link = URL::linkCategory($value['name'],$value['id']);   
+          $link = URL::linkProduct($value['name'],$value['id']);   
           $xhtmlMenu .= '<li><a href="'.$link.'">'.$value['name'].'</a>';
           if($value['children']) {
             self::recursiveMenu($value['children'],$xhtmlMenu);

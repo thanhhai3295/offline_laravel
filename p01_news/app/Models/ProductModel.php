@@ -142,7 +142,7 @@ class ProductModel extends AdminModel
             $result = $this->select('thumb')->where('id',$params['id'])->first();
         }
         if($options['task'] == 'news-get-items'){
-            $result = $this->select('a.id','a.name','a.content','a.thumb','a.created','c.name as category_name','c.display','c.id as category_id')->leftJoin('category as c', 'a.category_id', '=', 'c.id')->where('a.id',$params['article_id'])->where('a.status','active')->first();
+            $result = $this->select('p.id','p.price','p.attribute','p.name','p.description','p.thumb','p.status','cp.name as category_name','cp.id as category_id')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id')->where('p.id',$params['id'])->where('p.status','active')->first();
             if($result) $result = $result->toArray();
         }
         return $result;
