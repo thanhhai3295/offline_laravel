@@ -37,7 +37,7 @@
     [
       'label' => Form::label('category_id', 'Category',$formLabelAttr),
       'element' => Form::select('category_id', $arrParent, $item['category_id'],$formInputAttr),
-      'error' => 'status'
+      'error' => 'category_id'
     ]
 
   ];

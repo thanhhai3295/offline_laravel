@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\ProductModel as MainModel;
+use App\Models\GroupattrModel;
+use App\Models\AttributeModel;
+use DB;
+use Config;
 use App\Models\CategoryproductModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest as MainRequest;
@@ -20,6 +24,14 @@ class ProductController extends AdminController
     public function save(MainRequest $request) {
       if($request->method() == 'POST') {
         $params = $request->all();
+        if(isset($params['attr']['name'])) {
+          $tmp = [];
+          foreach ($params['attr']['name'] as $key => $value) {
+            $tmp[$value] = $params['attr']['value'][$key];
+            $params['attr'] = $params['attr'] + $tmp;
+            unset($params['attr']['name'],$params['attr']['value']);
+          }
+        }
         echo '<pre>';
         print_r($params);
         echo '</pre>';die();
@@ -42,9 +54,12 @@ class ProductController extends AdminController
       }
       
       $arrParent = CategoryproductModel::defaultOrder()->get()->toTree()->toArray();
+      $groupattrModel = new GroupattrModel();
+      $itemsGroupAttribute = $groupattrModel->listItems(null,['task' => 'news-list-items-in-selectbox']);
       return view($this->pathViewController.'form',[
         'item' => $item,
-        'arrParent' => $arrParent
+        'arrParent' => $arrParent,
+        'itemsGroupAttribute' => $itemsGroupAttribute
       ]);
     }
     public function upload(Request $request) {
@@ -58,5 +73,26 @@ class ProductController extends AdminController
     }
     public function groupAttribute(Request $request) {
       return view($this->pathViewController.'group-attribute',[]);
+    }
+    public function addFormAttr(){
+      $id = request()->id;
+      $result = DB::table('attr')->where('attr_group_id','LIKE',"%$id%")->pluck('name');
+      $configAttr = Config::get('zvn.attribute');
+      $xhtml = '';
+      if($result) {
+        foreach ($result as $key => $value) {
+          $xhtml .= '<div class="form-group">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <input class="form-control" type="text" value="'.$configAttr[$value].'" readonly>
+                        </div>
+                        <div class="col-md-9">
+                          <input class="form-control tags" type="text" name="attr['.$value.']">
+                        </div>
+                      </div>
+                    </div>';
+        }
+      }
+      echo $xhtml;
     }
 }

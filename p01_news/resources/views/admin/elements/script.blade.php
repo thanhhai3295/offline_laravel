@@ -23,7 +23,7 @@
   })(jQuery);
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="{{asset('assmin/js/tag-it.min.js')}}"></script>
+<script src="{{asset('assmin/js/jquery.tagsinput.js')}}"></script>
 <script src="{{asset('assmin/js/dropzone.js')}}"></script>
 <script src="{{asset('assmin/js/my-js.js')}}"></script>
 

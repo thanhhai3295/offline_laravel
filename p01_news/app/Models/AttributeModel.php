@@ -38,10 +38,6 @@ class AttributeModel extends AdminModel
             $query = $this->select('id','name')->where('status','active')->limit(8);
             $result = $query->get()->toArray();
         }
-        if($options['task'] == 'news-list-items-is-home') {
-            $query = $this->select('id','name','display')->where('status','active')->where('is_home',1);
-            $result = $query->get()->toArray();
-        }
         if($options['task'] == 'news-list-items-in-selectbox') {
             $query = $this->select('id','name')->where('status','active')->orderBy('name','asc');
             $result = $query->pluck('name','id')->toArray();

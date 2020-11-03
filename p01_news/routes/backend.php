@@ -143,6 +143,7 @@
       Route::post('upload',$controller.'upload')->name($controllerName.'/upload');
       Route::post('attribute',$controller.'attribute')->name($controllerName.'/attribute');
       Route::post('group-attribute',$controller.'groupAttribute')->name($controllerName.'/groupAttribute');
+      Route::post('addFormAttr',$controller.'addFormAttr')->name($controllerName.'/addFormAttr');
     });
 
     // --------------- Attribute ---------------

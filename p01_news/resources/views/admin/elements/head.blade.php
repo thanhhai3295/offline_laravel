@@ -21,6 +21,6 @@
 <!-- Custom Theme Style -->
 <link href="{{asset('assmin/css/toastr.css')}}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
-<link href="{{asset('assmin/css/jquery.tagit.css')}}" rel="stylesheet">
+<link href="{{asset('assmin/css/jquery.tagsinput.css')}}" rel="stylesheet">
 <link href="{{asset('assmin/css/dropzone.css')}}" rel="stylesheet">
 <link href="{{asset('assmin/css/mycss.css')}}" rel="stylesheet">

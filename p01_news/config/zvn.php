@@ -8,6 +8,10 @@
       'long_time' => 'H:m:s d/m/Y',
       'short_time'=> 'd/m/Y'
     ],
+    'attribute' => [
+      'color' => 'Màu Sắc',
+      'slogan'=> 'Slogan'
+    ],
     'dashboard' => [
       'user' => ['icon' => 'fa fa-user'],
       'category' => ['icon' => 'fa fa fa-building-o'],

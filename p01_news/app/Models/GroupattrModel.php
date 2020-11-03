@@ -32,10 +32,10 @@ class GroupattrModel extends AdminModel
                     $query->where($params['search']['field'],'LIKE',"%{$params['search']['value']}%");
                 }
             }
-            $result = $query->orderBy('id','desc')->paginate($params['pagination']['totalItemsPerPage']);  
+            $result = $query->orderBy('id','desc')->paginate($params['pagination']['totalItemsPerPage']); 
         }
         if($options['task'] == 'menu-list-items') {
-            $query = $this->select('id','name')->where('status','active')->limit(8);
+            $query = $this->select('id','name')->where('status','active');
             $result = $query->get()->toArray();
         }
         if($options['task'] == 'news-list-items-is-home') {

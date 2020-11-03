@@ -217,12 +217,9 @@ $(document).ready(function() {
 	// 	format: 'dd-mm-yyyy',
 	// });
 
-	//TAG-IT
-	$('#allowSpacesTags').tagit({
-		availableTags: 'php',
-		allowSpaces: true,
-		fieldName: "tags[]"
-	});
+
+		
+	
 	//DROPZONE
 	
 	Dropzone.options.singleFileUpload = {

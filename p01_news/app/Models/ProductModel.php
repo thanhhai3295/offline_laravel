@@ -12,7 +12,7 @@ class ProductModel extends AdminModel
         $this->table = 'product as p';
         $this->folderUpload = 'product';
         $this->fieldSearchAccepted = ['name','description'];
-        $this->crudNotAccepted = ['_token','thumb_current'];
+        $this->crudNotAccepted = ['_token','thumb_current','groupAttribute'];
     }
     public function listItems($params = null,$options = null) {
         $result = null;
