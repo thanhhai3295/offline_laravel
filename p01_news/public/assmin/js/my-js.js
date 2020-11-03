@@ -245,8 +245,11 @@ $(document).ready(function() {
 		},
     success: function(file,response) {
 			var id = file.name.replace('.','-');
-			var input = '<input type="hidden" name="thumb[]" value='+response.name+' id='+id+'>';
-			$('#main-form').append(input);
+			var input = '<input type="hidden" name="thumb[]" value='+response.name+'>';
+			var alt   = '<input type="text" placeholder="Alt Picture" name="alt[]" class="form-control">';
+			var image = '<image src='+response.url+' class="img-thumbnail" />';
+			var xhtml = `<div class="col-md-3" id=${id}>${input}${image}${alt}</div>`;
+			$('#uploaded-image').append(xhtml);
     },
 	};
 	

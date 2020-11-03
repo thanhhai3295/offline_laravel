@@ -214,5 +214,14 @@
       $result = $groupAttr->getItem($params,['task' => 'get-name']);
       return implode('<br>',$result) ;
     }
+    public static function showAttribute($json) {
+      $str = json_decode($json,true);
+      $xhtml = '';
+      foreach ($str as $key => $value) {
+        $xhtml .= $value['name'].': '.implode(',',$value['value']).'<br>';
+      }
+      return $xhtml;
+    }
+    
   }
 ?>

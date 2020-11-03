@@ -6,7 +6,13 @@
             <h4 class="mb-0 f-w-600">Drop files here or click to upload.</h4>
         </div>
       </div>
+      <br>
+      <div id="uploaded-image">
+
+      </div>
     </div>
   </div>
+
+  
 
 

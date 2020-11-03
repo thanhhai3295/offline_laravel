@@ -7,7 +7,9 @@
     <thead>
       <tr class="headings">
         <th class="column-title">#</th>
-        <th class="column-title">Article Info</th>
+        <th class="column-title">Product Info</th>
+        <th class="column-title">Attribute</th>
+        <th class="column-title">Category Name</th>
         <th class="column-title">Thumb</th>
         <th class="column-title">Trạng thái</th>
         <th class="column-title">Category</th>
@@ -19,16 +21,19 @@
         @if (count($items) > 0)
         @foreach ($items as $key => $value)
           @php
+            $arrThumb = json_decode($value['thumb'],true);
+            $value['thumb'] = $arrThumb[0]['name'];
             $id              = $value['id'];
             $index           = $key + 1;
             $class           = ($index % 2 == 0 ) ? 'event' : 'odd';
             $name            = Highlight::show($value['name'],$params['search'],'name');
-            $content         = Highlight::show($value['content'],$params['search'],'content');
+            $description     = Highlight::show($value['description'],null,'description');
+            $price           = $value['price'];
+            $attribute       = Template::showAttribute($value['attribute']);
             $thumb           = Template::showItemThumb($controllerName,$value['thumb'],$value['name']);
             $createdHistory  = Template::showItemHistory($value['created_by'],$value['created']);
             $modifiedHistory = Template::showItemHistory($value['modified_by'],$value['modified']);
-            $status          = Template::showItemStatus($controllerName,$id,$value['status']);
-            $type            = Template::showItemSelect($controllerName,$id,$value['type'],'type');
+            $status          = Template::showItemStatus($controllerName,$id,$value['status']);  
             $category        = $value['category_name'];
             $listBtnAction   = Template::showButtonAction($controllerName,$id);
           @endphp 
@@ -36,12 +41,15 @@
             <td>{{ $index }}</td>
             <td width="40%">
               <p><strong>Name:</strong> {!! $name !!}</p>
-              <p><strong>Content:</strong> {!! $content !!}</p>
+              <p><strong>Price:</strong> {!! $price !!}</p>
+              <p><strong>Description:</strong> {!! $description !!}</p>
             </td>
+            <td>{!! $attribute !!}</td>
+            <td>{!! $category !!}</td>
             <td>{!! $thumb !!}</td>
             <td>{!! $status !!}</td>
-            <td>{!! $type !!}</td>
-            <td>{!! $category !!}</td>
+            <td>{!! $createdHistory !!}</td>           
+            <td>{!! $modifiedHistory !!}</td>
             <td class="last">{!! $listBtnAction !!}</td>
           </tr>
         @endforeach

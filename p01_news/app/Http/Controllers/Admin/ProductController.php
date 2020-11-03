@@ -24,17 +24,25 @@ class ProductController extends AdminController
     public function save(MainRequest $request) {
       if($request->method() == 'POST') {
         $params = $request->all();
-        if(isset($params['attr']['name'])) {
+        if(isset($params['attr'])) {
           $tmp = [];
-          foreach ($params['attr']['name'] as $key => $value) {
-            $tmp[$value] = $params['attr']['value'][$key];
-            $params['attr'] = $params['attr'] + $tmp;
-            unset($params['attr']['name'],$params['attr']['value']);
+          for ($i = 0; $i < count($params['attr']); $i++) {
+            $tmp[$i]['name'] = $params['attr']['name'][$i];
+            $tmp[$i]['value']  = explode(',',$params['attr']['value'][$i]);
           }
+          unset($params['attr']);
+          $params['attribute'] = json_encode($tmp);
         }
-        echo '<pre>';
-        print_r($params);
-        echo '</pre>';die();
+        if(isset($params['thumb']) && isset($params['alt'])) {
+          $tmp = [];
+          for ($i = 0; $i < count($params['thumb']); $i++) {
+            $tmp[$i]['name'] = $params['thumb'][$i];
+            $tmp[$i]['alt']  = $params['alt'][$i];
+          }
+          unset($params['alt']);
+          $params['thumb'] = json_encode($tmp);
+        }
+
         $task = 'add-item';
         $notify = 'Add Item Success!';
         if($params['id'] != NULL) {
@@ -66,7 +74,10 @@ class ProductController extends AdminController
       $thumbObj = $request->file('file');
       $thumbName = Str::random(10).'.'.$thumbObj->clientExtension();
       $thumbObj->storeAs($this->controllerName,$thumbName,'zvn_store_images');
-      return response()->json(['name' => $thumbName]);
+      return response()->json([
+        'name' => $thumbName,
+        'url'  => asset("assmin/img/$this->controllerName/$thumbName"),
+        ]);
     } 
     public function attribute(Request $request) {
       return view($this->pathViewController.'attribute',[]);
@@ -77,17 +88,16 @@ class ProductController extends AdminController
     public function addFormAttr(){
       $id = request()->id;
       $result = DB::table('attr')->where('attr_group_id','LIKE',"%$id%")->pluck('name');
-      $configAttr = Config::get('zvn.attribute');
       $xhtml = '';
       if($result) {
         foreach ($result as $key => $value) {
           $xhtml .= '<div class="form-group">
                       <div class="row">
                         <div class="col-md-3">
-                          <input class="form-control" type="text" value="'.$configAttr[$value].'" readonly>
+                          <input class="form-control" type="text" name="attr[name][]" value="'.$value.'" readonly>
                         </div>
                         <div class="col-md-9">
-                          <input class="form-control tags" type="text" name="attr['.$value.']">
+                          <input class="form-control tags" type="text" name="attr[value][]">
                         </div>
                       </div>
                     </div>';
