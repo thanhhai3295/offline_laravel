@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2020 at 11:07 AM
+-- Generation Time: Nov 04, 2020 at 09:46 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -72,6 +72,55 @@ INSERT INTO `article` (`id`, `category_id`, `name`, `content`, `status`, `thumb`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attr`
+--
+
+CREATE TABLE `attr` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attr_group_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `attr`
+--
+
+INSERT INTO `attr` (`id`, `name`, `attr_group_id`, `created`, `created_by`, `modified`, `modified_by`, `status`) VALUES
+(1, 'color', '[\"1\",\"2\"]', '2020-11-02 00:00:00', 'HaiDepTrai', '2020-11-03 00:00:00', 'HaiDepTrai', 'active'),
+(3, 'slogan', '[\"2\"]', '2020-11-02 00:00:00', 'HaiDepTrai', '2020-11-03 00:00:00', 'HaiDepTrai', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attr_group`
+--
+
+CREATE TABLE `attr_group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `attr_group`
+--
+
+INSERT INTO `attr_group` (`id`, `name`, `created`, `created_by`, `modified`, `modified_by`, `status`) VALUES
+(1, 'Áo Thun', '2020-11-02 00:00:00', 'HaiDepTrai', NULL, NULL, 'active'),
+(2, 'Bình Giữ Nhiệt', '2020-11-02 00:00:00', 'HaiDepTrai', NULL, NULL, 'active');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -125,9 +174,11 @@ CREATE TABLE `category_product` (
 --
 
 INSERT INTO `category_product` (`id`, `name`, `_lft`, `_rgt`, `parent_id`, `created`, `created_by`, `modified`, `modified_by`, `status`) VALUES
-(1, 'Tranh A', 1, 2, NULL, '2020-10-27 11:22:32', NULL, '2020-10-27 11:22:32', NULL, 'active'),
-(2, 'Tranh B', 3, 4, NULL, '2020-10-27 11:22:58', NULL, '2020-10-27 11:22:58', NULL, 'active'),
-(3, 'Tranh C', 5, 6, NULL, '2020-10-27 11:23:09', NULL, '2020-10-27 11:23:09', NULL, 'active');
+(4, 'Test 1', 7, 8, NULL, '2020-11-04 08:00:52', NULL, '2020-11-04 08:00:52', NULL, 'active'),
+(5, 'Test 2', 9, 10, NULL, '2020-11-04 08:00:57', NULL, '2020-11-04 08:00:57', NULL, 'active'),
+(6, 'Máy Tính & Laptop', 1, 6, NULL, '2020-11-04 08:01:11', NULL, '2020-11-04 08:02:43', NULL, 'active'),
+(7, 'Chuột, Bàn Phím', 2, 5, 6, '2020-11-04 08:01:51', NULL, '2020-11-04 08:01:51', NULL, 'active'),
+(8, 'Bàn Di Chuột', 3, 4, 7, '2020-11-04 08:02:35', NULL, '2020-11-04 08:02:35', NULL, 'active');
 
 -- --------------------------------------------------------
 
@@ -217,8 +268,8 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `name`, `link`, `ordering`, `created`, `created_by`, `modified`, `modified_by`, `status`, `type`) VALUES
-(1, 'Home', 'http://localhost/phpmyadmin/tbl_change.php?db=project_laravel&table=menu', 2, NULL, NULL, '2020-10-05 00:00:00', 'HaiDepTrai', 'active', 'category'),
-(2, 'test menu', 'http://127.0.0.1:8000/admin/slider/form', 123, '2020-10-05 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', NULL),
+(1, 'Home', 'http://localhost/phpmyadmin/tbl_change.php?db=project_laravel&table=menu', 1, NULL, NULL, '2020-10-05 00:00:00', 'HaiDepTrai', 'active', 'direct'),
+(2, 'Product', 'http://127.0.0.1:8000/san-pham/chuot-ban-phim-1.html', 2, '2020-10-05 00:00:00', 'HaiDepTrai', '2020-11-04 00:00:00', 'HaiDepTrai', 'active', 'category'),
 (4, 'Tin Tức Tổng Hợp', 'http://127.0.0.1:8000/tin-tuc-tong-hop.html', 4, '2020-10-09 00:00:00', 'HaiDepTrai', NULL, NULL, 'active', 'direct'),
 (5, 'Liên Hệ', 'http://127.0.0.1:8000/lien-he', 10, '2020-10-12 00:00:00', 'HaiDepTrai', '2020-10-14 00:00:00', 'HaiDepTrai', 'active', 'direct');
 
@@ -280,6 +331,13 @@ CREATE TABLE `product` (
   `modified_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `categoryproduct_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `description`, `attribute`, `thumb`, `status`, `ordering`, `created`, `created_by`, `modified`, `modified_by`, `categoryproduct_id`) VALUES
+(1, 'Vỏ bọc bảo vệ laptop trong suốt nhiều màu độc đáo cho Macbook', 142465, '<p>Thời gian giao h&agrave;ng dự kiến cho sản phẩm n&agrave;y l&agrave; từ 7-9 ng&agrave;y</p>\r\n\r\n<p>Th&ocirc;ng số sản phẩm</p>\r\n\r\n<p>1. Thiết kế lộ logo Apple</p>\r\n\r\n<p>2. Bao gồm vỏ phần tr&ecirc;n v&agrave; dưới</p>\r\n\r\n<p>3. Thiết kế ch&iacute;nh x&aacute;c, vừa vặn ho&agrave;n to&agrave;n với m&aacute;y t&iacute;nh, dễ lắp đặt, dễ th&aacute;o gỡ</p>\r\n\r\n<p>4. Kh&ocirc;ng chặn bất kỳ cổng kết nối n&agrave;o, bạn c&oacute; thể cắm bộ sạc, c&aacute;p hoặc tai nghe m&agrave; kh&ocirc;ng cần th&aacute;o vỏ.</p>\r\n\r\n<p>5. Vỏ ngo&agrave;i si&ecirc;u nhẹ, mịn, cho bạn cảm gi&aacute;c chạm cực tốt đồng thời bảo vệ m&aacute;y t&iacute;nh khỏi va đập, trầy xước.</p>\r\n\r\n<p>6. Thiết kế ch&acirc;n cao su chống nghi&ecirc;ng đảm bảo m&aacute;y t&iacute;nh của bạn ổn định v&agrave; an to&agrave;n, đồng thời mang lại điều kiện tản nhiệt tốt hơn kết hợp với lỗ th&ocirc;ng hơi ph&iacute;a dưới</p>\r\n\r\n<p>7. Do hiệu chỉnh m&agrave;u của từng c&agrave;i đặt m&agrave;n h&igrave;nh, m&agrave;u sắc c&oacute; thể hơi kh&aacute;c, vui l&ograve;ng tham khảo sản phẩm thực tế m&agrave; bạn nhận được.</p>\r\n\r\n<p>8. Chất liệu: Silicon</p>', '[{\"name\":\"color\",\"value\":[\"\\u0110en\",\"Xanh\",\"H\\u1ed3ng\"]},{\"name\":\"size\",\"value\":[\"Air11\",\"Air13\",\"Pro13\"]}]', '[{\"name\":\"KoOOWDjOqq.jpeg\",\"alt\":\"main macbook\"},{\"name\":\"49t9IIr2iu.jpeg\",\"alt\":\"macbook hong\"},{\"name\":\"J7Xux0tCdp.jpeg\",\"alt\":\"macbook xanh\"}]', 'active', 1, '2020-11-03 00:00:00', 'HaiDepTrai', '2020-11-04 00:00:00', 'HaiDepTrai', 8);
 
 -- --------------------------------------------------------
 
@@ -408,6 +466,18 @@ ALTER TABLE `article`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
+-- Indexes for table `attr`
+--
+ALTER TABLE `attr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `attr_group`
+--
+ALTER TABLE `attr_group`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -478,6 +548,18 @@ ALTER TABLE `article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
+-- AUTO_INCREMENT for table `attr`
+--
+ALTER TABLE `attr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `attr_group`
+--
+ALTER TABLE `attr_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -487,7 +569,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `category_product`
 --
 ALTER TABLE `category_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -511,7 +593,7 @@ ALTER TABLE `nestedset`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rss`
