@@ -116,11 +116,11 @@ class ProductModel extends AdminModel
             $this->insert($this->prepareParams($params));
         }
         if($options['task'] == 'edit-item'){
-            
-            if(!empty($params['thumb'])) {
-                Storage::disk('zvn_store_images')->delete("$this->folderUpload/".$params['thumb_current']);
-                $params['thumb'] = $this->uploadThumb($params['thumb']);
-            }
+            $params['categoryproduct_id'] = $params['category_id'];
+            // if(!empty($params['thumb'])) {
+            //     Storage::disk('zvn_store_images')->delete("$this->folderUpload/".$params['thumb_current']);
+            //     $params['thumb'] = $this->uploadThumb($params['thumb']);
+            // }
             $params['modified_by'] = 'HaiDepTrai';
             $params['modified'] = date('Y-m-d');
             $this->where('id',$params['id'])->update($this->prepareParams($params));
@@ -136,7 +136,7 @@ class ProductModel extends AdminModel
     public function getItem($params = null,$options = null){
         $result = null;
         if($options['task'] == 'get-item'){
-            $result = $this->select('id','name','content','category_id','thumb','created','created_by','modified','modified_by','status')->where('id',$params['id'])->first();
+            $result = $this->select('p.id','p.price','p.ordering','p.attribute','p.name','p.description','p.thumb','p.status','cp.name as category_name')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id')->where('p.id',$params['id'])->first();
         }
         if($options['task'] == 'get-thumb'){
             $result = $this->select('thumb')->where('id',$params['id'])->first();

@@ -12,8 +12,6 @@
         <th class="column-title">Category Name</th>
         <th class="column-title">Thumb</th>
         <th class="column-title">Trạng thái</th>
-        <th class="column-title">Category</th>
-        <th class="column-title">Tạo mới</th>
         <th class="column-title">Hành động</th>
       </tr>
     </thead>
@@ -39,18 +37,16 @@
           @endphp 
           <tr class="{{ $class }} pointer">
             <td>{{ $index }}</td>
-            <td width="40%">
+            <td>
               <p><strong>Name:</strong> {!! $name !!}</p>
               <p><strong>Price:</strong> {!! $price !!}</p>
               <p><strong>Description:</strong> {!! $description !!}</p>
             </td>
             <td>{!! $attribute !!}</td>
-            <td>{!! $category !!}</td>
+            <td width="8%">{!! $category !!}</td>
             <td>{!! $thumb !!}</td>
             <td>{!! $status !!}</td>
-            <td>{!! $createdHistory !!}</td>           
-            <td>{!! $modifiedHistory !!}</td>
-            <td class="last">{!! $listBtnAction !!}</td>
+            <td width="8%" class="last">{!! $listBtnAction !!}</td>
           </tr>
         @endforeach
         @else
