@@ -1,6 +1,7 @@
 @php
     use App\Helpers\Template as Template; 
     use App\Helpers\Highlight as Highlight; 
+
 @endphp
 <div class="table-responsive">
   <table class="table table-striped jambo_table bulk_action">
@@ -18,10 +19,10 @@
     </thead>
       <tbody>          
         @if (count($items) > 0)
-        @foreach ($items as $key => $value)
+        @foreach ($items as $key => $value)   
           @php
             $arrThumb = json_decode($value['thumb'],true);
-            $value['thumb'] = $arrThumb[0]['name'];
+            $value['thumb']  = $arrThumb[0]['name'];
             $id              = $value['id'];
             $index           = $key + 1;
             $class           = ($index % 2 == 0 ) ? 'event' : 'odd';
@@ -32,7 +33,7 @@
             $createdHistory  = Template::showItemHistory($value['created_by'],$value['created']);
             $modifiedHistory = Template::showItemHistory($value['modified_by'],$value['modified']);
             $status          = Template::showItemStatus($controllerName,$id,$value['status']);  
-            $category        = $value['category_name'];
+            $category        = Template::showItemSelectCategory($controllerName,$id,$value['category_id'],$category);
             $listBtnAction   = Template::showButtonAction($controllerName,$id);
           @endphp 
           <tr class="{{ $class }} pointer">
@@ -42,7 +43,7 @@
             </td>
             <td width="10%">{!! $price !!}</td>
             <td>{!! $attribute !!}</td>
-            <td width="8%">{!! $category !!}</td>
+            <td>{!! $category !!}</td>
             <td width="10%">{!! $thumb !!}</td>
             <td>{!! $status !!}</td>
             <td width="8%" class="last">{!! $listBtnAction !!}</td>

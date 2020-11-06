@@ -5,6 +5,8 @@
     $xhtmlAreaSearch   = Template::showAreaSearch($controllerName,$params['search']);
     $xhtmlButtonGroup  = '<a href="'.route($controllerName.'/attribute').'" class="btn btn-success"><i class="fa fa-plus-circle"></i> Attribute </a>';
     $xhtmlButtonAttribute  = '<a href="'.route($controllerName.'/groupAttribute').'" class="btn btn-success"><i class="fa fa-plus-circle"></i> Group Attr</a>';
+    $arrCategory = Template::arrParentTree($category,false);
+    $xhtmlCategoryFilter   = Template::showSelectFilter($controllerName,$arrCategory,$params['filter']['category'],'category');
 @endphp
 @section('content')
 
@@ -19,6 +21,7 @@
                         {!!$xhtmlButtonFilter!!} 
                         {!!$xhtmlButtonGroup!!}
                         {!!$xhtmlButtonAttribute!!}
+                        {!!$xhtmlCategoryFilter!!}
                     </div>                   
                     <div class="col-md-5"> {!!$xhtmlAreaSearch!!} </div>
                 </div>

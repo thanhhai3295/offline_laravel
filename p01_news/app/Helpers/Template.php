@@ -109,6 +109,17 @@
       $xhtml .= '</select>';
       return $xhtml;
     }
+    public static function showItemSelectCategory($controllerName,$id,$displayValue,$arrCategory) {
+      $arrCategory = self::arrParentTree($arrCategory,false);
+      $link = route($controllerName.'/'.'category',['category_id' => 'value_new','id' => $id]);
+      $xhtml = '<select name="select_change_attr_ajax" data-url="'.$link.'"  class="form-control">';
+      foreach ($arrCategory as $key => $value) {
+        $xhtmlSelected = ($key == $displayValue) ? 'selected="selected"' : '';
+        $xhtml .= '<option '.$xhtmlSelected.' value="'.$key.'">'.$value.'</option>';
+      }
+      $xhtml .= '</select>';
+      return $xhtml;
+    }
     public static function showItemThumb($controllerName,$thumbName,$thumbAlt){
       $xhtml = '<img src="'.asset("assmin/img/$controllerName/$thumbName").'" alt="'.$thumbAlt.'" class="zvn-thumb" id="blah">';
       return $xhtml;

@@ -140,6 +140,7 @@
       Route::get('delete/{id}',$controller.'delete')->where('id','[0-9]+')->name($controllerName.'/delete');
       Route::get('change-status-{status}/{id}',$controller.'status')->where('id','[0-9]+')->name($controllerName.'/status');
       Route::get('change-price-{price}/{id}',$controller.'price')->where('id','[0-9]+')->name($controllerName.'/price');
+      Route::get('change-category-{category_id}/{id}',$controller.'category')->where('id','[0-9]+')->name($controllerName.'/category');
       Route::get('change-type-{type}/{id}',$controller.'type')->where('id','[0-9]+')->name($controllerName.'/type');
       Route::post('upload',$controller.'upload')->name($controllerName.'/upload');
       Route::post('attribute',$controller.'attribute')->name($controllerName.'/attribute');

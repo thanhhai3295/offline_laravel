@@ -6,6 +6,7 @@ use App\Models\AdminModel;
 use DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\CategoryproductModel;
 class ProductModel extends AdminModel
 {
     public function __construct() {
@@ -17,16 +18,13 @@ class ProductModel extends AdminModel
     public function listItems($params = null,$options = null) {
         $result = null;
             if($options['task'] == 'admin-list-items') {
-                $query = $this->select('p.id','p.price','p.attribute','p.name','p.description','p.thumb','p.status','cp.name as category_name')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id');
+                $query = $this->select('p.id','p.price','p.attribute','p.name','p.thumb','p.status','cp.name as category_name','cp.id as category_id')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id');
             
             if($params['filter']['status'] != 'all') {
                 $query->where('p.status','=',$params['filter']['status']);
             }
             if(!empty($params['filter']['category'])) {
-                $query->where('p.category_id','=',$params['filter']['category']);
-            }
-            if(!empty($params['filter']['type'])) {
-                $query->where('p.type','=',$params['filter']['type']);
+                $query->where('p.categoryproduct_id','=',$params['filter']['category']);
             }
             if($params['search']['value'] != '') {
                 if($params['search']['field'] == 'all') {
@@ -41,42 +39,6 @@ class ProductModel extends AdminModel
             }
             $result = $query->orderBy('p.id','desc')->paginate($params['pagination']['totalItemsPerPage']);
         }
-        if($options['task'] == 'news-list-items') {
-            $query = $this->select('id','name','content','thumb','created','created_by','modified','modified_by','status')->where('status','active')->limit(5);
-            $result = $query->get()->toArray();
-        }
-        if($options['task'] == 'news-list-items-feature') {
-            $query = $this->select('a.id','a.name','a.content','a.created','a.category_id','a.thumb','a.type','a.status','c.name as category_name')
-                ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
-                ->where('a.status','active')
-                ->where('type','feature')
-                ->orderBy('id','desc')
-                ->take(3);
-            $result = $query->get()->toArray();
-        }
-        if($options['task'] == 'news-list-items-lastest') {
-            $query = $this->select('a.id','a.name','a.content','a.created','a.category_id','a.thumb','a.status','c.name as category_name')
-                ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
-                ->where('a.status','active')
-                ->orderBy('id','desc')
-                ->take(4);
-            $result = $query->get()->toArray();
-        }
-        if($options['task'] == 'news-list-items-in-category') {
-            $query = $this->select('id','name','content','thumb','created')
-                ->where('status','active')
-                ->where('category_id',$params['category_id'])
-                ->take(4);
-            $result = $query->get()->toArray();
-        }
-        if($options['task'] == 'news-list-items-related-in-category') {
-            $query = $this->select('id','name','content','thumb','created')
-            ->where('status','active')
-            ->where('category_id',$params['category_id'])
-            ->where('id','!=',$params['article_id'])
-            ->take(4);
-        $result = $query->get()->toArray();
-        }
         
         return $result;
     }
@@ -89,15 +51,15 @@ class ProductModel extends AdminModel
             if($params['search']['field'] == 'all') {
                 $query->where(function($query) use ($params) {
                     foreach ($this->fieldSearchAccepted as $key => $value) {
-                        $query->orWhere('a.'.$value,'LIKE',"%{$params['search']['value']}%");
+                        $query->orWhere('p.'.$value,'LIKE',"%{$params['search']['value']}%");
                     }
                 });
             } else if(in_array($params['search']['field'],$this->fieldSearchAccepted)){
-                $query->where('a.'.$params['search']['field'],'LIKE',"%{$params['search']['value']}%");
+                $query->where('p.'.$params['search']['field'],'LIKE',"%{$params['search']['value']}%");
             }
         }
         if(!empty($params['filter']['category'])) {
-            $query->where('a.category_id','=',$params['filter']['category']);
+            $query->where('p.categoryproduct_id','=',$params['filter']['category']);
         }
         $result = $query->get()->toArray();
         return $result;
@@ -110,6 +72,9 @@ class ProductModel extends AdminModel
         }
         if($options['task'] == 'change-price'){
             $this->where('id',$params['id'])->update(['price' => $params['price']]);
+        }
+        if($options['task'] == 'change-category'){
+            $this->where('id',$params['id'])->update(['categoryproduct_id' => $params['category_id']]);
         }
         if($options['task'] == 'add-item'){
             $params['created_by'] = 'HaiDepTrai';

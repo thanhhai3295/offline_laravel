@@ -21,6 +21,22 @@ class ProductController extends AdminController
       parent::__construct();
       $this->model = new MainModel();
     }
+    public function index(Request $request)
+    { 
+      $this->params['filter']['status'] = $request->input('filter_status','all');
+      $this->params['filter']['category'] = $request->input('filter_category','');
+      $this->params['search']['field'] = $request->input('search_field','');
+      $this->params['search']['value'] = $request->input('search_value','');
+      $items = $this->model->listItems($this->params,['task' => 'admin-list-items']);
+      $countByStatus = $this->model->countItems($this->params,['task' => 'count-items']);
+      $category = CategoryproductModel::defaultOrder()->get()->toTree()->toArray();
+      return view($this->pathViewController.'index',[
+        'params' => $this->params,
+        'items' => $items,
+        'category' => $category,
+        'countByStatus' => $countByStatus
+      ]);
+    }
     public function save(MainRequest $request) {
       if($request->method() == 'POST') {
         $params = $request->all();
@@ -83,6 +99,12 @@ class ProductController extends AdminController
       $params['id'] = $request->id;
       $params['price'] = $request->price;
       $this->model->saveItems($params,['task' => 'change-price']);
+      echo true;
+    }
+    public function category(Request $request) {
+      $params['id'] = $request->id;
+      $params['category_id'] = $request->category_id;
+      $this->model->saveItems($params,['task' => 'change-category']);
       echo true;
     }
     public function attribute(Request $request) {
