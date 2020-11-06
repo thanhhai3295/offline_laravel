@@ -109,3 +109,18 @@ a.ordering {
     padding: 10px;
     margin-right:5px;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+#uploaded-image div.col-md-3.cursor-pointer {
+    position: relative;
+}
+#uploaded-image .close-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 3px 7px;
+    color: #fff;
+    background: #000;
+}
