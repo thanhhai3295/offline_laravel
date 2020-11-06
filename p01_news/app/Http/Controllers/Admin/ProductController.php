@@ -79,6 +79,12 @@ class ProductController extends AdminController
         'url'  => asset("assmin/img/$this->controllerName/$thumbName"),
         ]);
     } 
+    public function price(Request $request) {
+      $params['id'] = $request->id;
+      $params['price'] = $request->price;
+      $this->model->saveItems($params,['task' => 'change-price']);
+      echo true;
+    }
     public function attribute(Request $request) {
       return view($this->pathViewController.'attribute',[]);
     }

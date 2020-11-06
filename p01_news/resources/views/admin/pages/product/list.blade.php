@@ -8,6 +8,7 @@
       <tr class="headings">
         <th class="column-title">#</th>
         <th class="column-title">Product Info</th>
+        <th class="column-title">Price</th>
         <th class="column-title">Attribute</th>
         <th class="column-title">Category Name</th>
         <th class="column-title">Thumb</th>
@@ -25,8 +26,7 @@
             $index           = $key + 1;
             $class           = ($index % 2 == 0 ) ? 'event' : 'odd';
             $name            = Highlight::show($value['name'],$params['search'],'name');
-            $description     = Highlight::show($value['description'],null,'description');
-            $price           = $value['price'];
+            $price           = Form::text('price',$value['price'],['class' => 'form-control','data-id' => $id,'data-url' => route($controllerName.'/price',['price' => 'value','id' => $id])]);
             $attribute       = Template::showAttribute($value['attribute']);
             $thumb           = Template::showItemThumb($controllerName,$value['thumb'],$value['name']);
             $createdHistory  = Template::showItemHistory($value['created_by'],$value['created']);
@@ -39,12 +39,11 @@
             <td>{{ $index }}</td>
             <td>
               <p><strong>Name:</strong> {!! $name !!}</p>
-              <p><strong>Price:</strong> {!! $price !!}</p>
-              <p><strong>Description:</strong> {!! $description !!}</p>
             </td>
+            <td width="10%">{!! $price !!}</td>
             <td>{!! $attribute !!}</td>
             <td width="8%">{!! $category !!}</td>
-            <td>{!! $thumb !!}</td>
+            <td width="10%">{!! $thumb !!}</td>
             <td>{!! $status !!}</td>
             <td width="8%" class="last">{!! $listBtnAction !!}</td>
           </tr>

@@ -108,7 +108,9 @@ class ProductModel extends AdminModel
             $status = ($params['status'] == 'active') ? 'inactive' : 'active';
             $this->where('id',$params['id'])->update(['status' => $status]);
         }
-
+        if($options['task'] == 'change-price'){
+            $this->where('id',$params['id'])->update(['price' => $params['price']]);
+        }
         if($options['task'] == 'add-item'){
             $params['created_by'] = 'HaiDepTrai';
             $params['created'] = date('Y-m-d');
