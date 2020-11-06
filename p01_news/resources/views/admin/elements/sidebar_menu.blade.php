@@ -25,9 +25,16 @@
             <li><a href="{{ route('setting') }}"><i class="fa fa-cog"></i> Setting</a></li>
             <li><a href="{{ route('nestedset') }}"><i class="fa fa-sliders"></i> NestedSet</a></li>
             <li><a href="{{ route('categoryproduct') }}"><i class="fa fa-cogs"></i> Cat-Product</a></li>
-            <li><a href="{{ route('product') }}"><i class="fa fa-product-hunt"></i> Product</a></li>
-            <li><a href="{{ route('attribute') }}"><i class="fa fa-sitemap"></i> Attribute</a></li>
-            <li><a href="{{ route('groupattr') }}"><i class="fa fa-object-group"></i> Group Attr</a></li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-product-hunt"></i> Product Manager<span class="fa fa-chevron-down"></span>
+                </a>
+                <ul class="nav child_menu" style="display: none;">
+                    <li><a href="{{ route('product') }}"><i class="fa fa-credit-card"></i> Product</a></li>
+                    <li><a href="{{ route('attribute') }}"><i class="fa fa-sitemap"></i> Attribute</a></li>
+                    <li><a href="{{ route('groupattr') }}"><i class="fa fa-object-group"></i> Group Attr</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
