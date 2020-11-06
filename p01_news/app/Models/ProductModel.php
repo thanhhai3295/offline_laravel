@@ -13,7 +13,7 @@ class ProductModel extends AdminModel
         $this->table = 'product as p';
         $this->folderUpload = 'product';
         $this->fieldSearchAccepted = ['name','description'];
-        $this->crudNotAccepted = ['_token','thumb_current','groupAttribute','category_id'];
+        $this->crudNotAccepted = ['_token','thumb_current','category_id'];
     }
     public function listItems($params = null,$options = null) {
         $result = null;
@@ -103,7 +103,7 @@ class ProductModel extends AdminModel
     public function getItem($params = null,$options = null){
         $result = null;
         if($options['task'] == 'get-item'){
-            $result = $this->select('p.id','p.price','p.ordering','p.attribute','p.name','p.description','p.thumb','p.status','cp.name as category_name')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id')->where('p.id',$params['id'])->first();
+            $result = $this->select('p.id','p.price','p.ordering','p.attribute','p.name','p.description','p.thumb','p.status','p.group_attribute_id','cp.name as category_name')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id')->where('p.id',$params['id'])->first();
         }
         if($options['task'] == 'get-thumb'){
             $result = $this->select('thumb')->where('id',$params['id'])->first();
