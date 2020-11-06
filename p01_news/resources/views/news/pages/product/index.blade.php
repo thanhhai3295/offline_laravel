@@ -1,12 +1,12 @@
 @extends('news.main',['title' => $itemsProduct['name']])
 @section('content')
-@include('news.pages.product.elements.head')
+@include('news.multicart-theme.head')
     @php
         $attr = json_decode($itemsProduct['attribute'],true);
         $thumb = json_decode($itemsProduct['thumb'],true);
         $mainThumb = $thumb[0];
     @endphp
-    @include('news.pages.product.elements.breadcrumb',['item' => $itemsProduct])
+    @include('news.multicart-theme.breadcrumb',['item' => $itemsProduct])
     <div class="collection-wrapper">
         <div class="container">
             <div class="row">
@@ -128,7 +128,7 @@
         </div>
     </div>
 
-@include('news.pages.product.elements.script')
+@include('news.multicart-theme.script')
 <script>
     $(function() {
         

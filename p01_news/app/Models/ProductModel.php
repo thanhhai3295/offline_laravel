@@ -108,6 +108,10 @@ class ProductModel extends AdminModel
         if($options['task'] == 'get-thumb'){
             $result = $this->select('thumb')->where('id',$params['id'])->first();
         }
+        if($options['task'] == 'cat-get-items'){
+            $result = $this->select('p.id','p.price','p.name','p.description','p.thumb')->where('p.categoryproduct_id',$params['id'])->where('status','active')->orderBy('ordering','asc')->get();
+            if($result) $result = $result->toArray();
+        }
         if($options['task'] == 'news-get-items'){
             $result = $this->select('p.id','p.price','p.attribute','p.name','p.description','p.thumb','p.status','cp.name as category_name','cp.id as category_id')->leftJoin('category_product as cp', 'p.categoryproduct_id', '=', 'cp.id')->where('p.id',$params['id'])->where('p.status','active')->first();
             if($result) $result = $result->toArray();
