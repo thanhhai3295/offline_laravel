@@ -35,6 +35,7 @@
                     <li><a href="{{ route('groupattr') }}"><i class="fa fa-object-group"></i> Group Attr</a></li>
                 </ul>
             </li>
+            <li><a href="{{ route('province') }}"><i class="fa fa-truck"></i> Province</a></li>
         </ul>
     </div>
 </div>

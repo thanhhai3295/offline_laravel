@@ -19,6 +19,12 @@
       'slider' => ['icon' => 'fa fa-sliders'],
       'menu' => ['icon' => 'fa fa-bars'],
     ],
+    'province' => [
+      'default' => ['name' => '--- Choose Province ---'],
+      'tphcm' => ['name' => 'TP Hồ Chí Minh'],
+      'hn' => ['name' => 'Hà Nội'],
+      'dn' => ['name' => 'Đà Nẵng'],
+    ],
     'template' => [
       'form_input' => ['class' => 'form-control col-md-6 col-xs-12'],
       'form_label' => ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'],
@@ -93,6 +99,7 @@
         'product'  => ['all','name','description'],
         'groupattr'  => ['all','name'],
         'attribute'  => ['all','name'],
+        'province'  => ['all','name'],
       ],
       'button' => [
         'default' => ['edit','delete'],
@@ -107,7 +114,8 @@
         'categoryproduct' => ['edit','delete'],
         'product' => ['edit','delete'],
         'attribute' => ['edit','delete'],
-        'groupattr' => ['edit','delete']
+        'groupattr' => ['edit','delete'],
+        'province' => ['edit','delete']
       ]
     ]
   ];
