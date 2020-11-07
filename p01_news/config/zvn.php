@@ -25,6 +25,14 @@
       'hn' => ['name' => 'Hà Nội'],
       'dn' => ['name' => 'Đà Nẵng'],
     ],
+    'coupon' => [
+      'type' => [
+        'default' => ['name' => '--- Choose Type ---'],
+        'direct' => ['name' => 'Direct'],
+        'percent' => ['name' => 'Percent']
+      ],
+      
+    ],
     'template' => [
       'form_input' => ['class' => 'form-control col-md-6 col-xs-12'],
       'form_label' => ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'],
@@ -54,6 +62,10 @@
       'type' => [
         'feature'    => ['name' =>'Feature'],
         'normal'    => ['name' =>'Normal']
+      ],
+      'type_coupon' => [
+        'direct'    => ['name' =>'Direct'],
+        'percent'    => ['name' =>'Percent']
       ],
       'menu_type' => [
         'direct' => ['name' => 'Direct'],
@@ -100,6 +112,7 @@
         'groupattr'  => ['all','name'],
         'attribute'  => ['all','name'],
         'province'  => ['all','name'],
+        'coupon'  => ['all','name'],
       ],
       'button' => [
         'default' => ['edit','delete'],
@@ -115,7 +128,8 @@
         'product' => ['edit','delete'],
         'attribute' => ['edit','delete'],
         'groupattr' => ['edit','delete'],
-        'province' => ['edit','delete']
+        'province' => ['edit','delete'],
+        'coupon' => ['edit','delete']
       ]
     ]
   ];

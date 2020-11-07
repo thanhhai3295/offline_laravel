@@ -36,6 +36,7 @@
                 </ul>
             </li>
             <li><a href="{{ route('province') }}"><i class="fa fa-truck"></i> Province</a></li>
+            <li><a href="{{ route('coupon') }}"><i class="fa fa-percent"></i> Coupon</a></li>
         </ul>
     </div>
 </div>

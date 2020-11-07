@@ -233,6 +233,25 @@ $(document).ready(function() {
 			});
 		} 
 	});
+	$('input[name=value]').on('blur',function() {
+		var new_value = $(this).val();
+		var old_value = $(this).attr('value');
+		var url       = $(this).data('url');
+		var id 				= $(this).data('id');
+		if(isNaN(new_value)) {
+			warning('Please Insert Number');
+		}
+		if(old_value != new_value) {
+			$.ajax({
+				type: "GET",
+				url: url.replace('value',new_value),
+				dataType: "json",
+				success: function(result) {
+					if(result) notify('Price Updated!');
+				}
+			});
+		} 
+	});
 	//Save Local Storage
 	var setting = localStorage.getItem('setting');
 	if(!setting) {
